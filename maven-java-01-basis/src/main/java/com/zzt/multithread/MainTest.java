@@ -2,7 +2,7 @@ package com.zzt.multithread;
 
 /**
  * 描述：<br>Java --- 多线程：
- *      对应博客地址：https://blog.csdn.net/First_Bal/article/details/108184629
+ *      对应博客地址：https://blog.csdn.net/First_Bal/article/details/108399678
  * </>
  *
  * @author 周志通
