@@ -11,6 +11,7 @@
     <modules>
         <module>maven-java-01-basis</module>
         <module>maven-java-02-algorithm_and_data_structures</module>
+        <module>maven-java-03-design_patterns</module>
     </modules>
 
 
