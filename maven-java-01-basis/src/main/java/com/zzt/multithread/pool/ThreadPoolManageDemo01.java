@@ -30,17 +30,17 @@ public class ThreadPoolManageDemo01 {
         // 4. 关闭线程池
         executorService.shutdown();
     }
+    private static class MyRunnable implements Runnable {
 
-}
-
-class MyRunnable implements Runnable {
-
-    @SneakyThrows
-    @Override
-    public void run() {
-        for (int i = 0; i < 10; i++) {
-            Thread.sleep(100);
-            System.out.println(Thread.currentThread().getName() + "线程正在执行：" + new Date().getTime());
+        @SneakyThrows
+        @Override
+        public void run() {
+            for (int i = 0; i < 10; i++) {
+                Thread.sleep(100);
+                System.out.println(Thread.currentThread().getName() + "线程正在执行：" + new Date().getTime());
+            }
         }
     }
 }
+
+
