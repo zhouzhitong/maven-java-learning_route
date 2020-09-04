@@ -1,0 +1,5 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea/
+.idea/.gitignore
+maven-java-learning_route.iml
+target/
