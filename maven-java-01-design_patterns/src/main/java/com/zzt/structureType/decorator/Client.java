@@ -1,7 +1,7 @@
 package com.zzt.structureType.decorator;
 
 /**
- * 描述：<br>
+ * 描述：<br> 具体说明：https://blog.csdn.net/First_Bal/article/details/108028530
  * </>
  *
  * @author 周志通
