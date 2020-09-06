@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicStampedReference;
  * @version 1.0.0
  * @date 2020/9/5 23:26
  **/
-public class AtomicDemo02 {
+public class AtomicStampedReferenceDemo02 {
     static AtomicStampedReference<Integer> n;
     public static void main(String[] args) throws InterruptedException {
         int j = 0;
