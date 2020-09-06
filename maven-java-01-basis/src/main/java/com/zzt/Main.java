@@ -9,4 +9,7 @@ package com.zzt;
  * @date 2020/9/4 9:40
  */
 public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello World!!!");
+    }
 }
