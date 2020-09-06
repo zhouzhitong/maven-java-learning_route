@@ -28,24 +28,27 @@ public class ReentrantLockDemo01 {
 
         System.out.println(lockThread.count);
     }
-}
 
-class LockThread implements Runnable {
-    Integer count = 0;
-    private Lock lock = new ReentrantLock();
+    private static class LockThread implements Runnable {
+        Integer count = 0;
+        private Lock lock = new ReentrantLock();
 
-    @Override
-    public void run() {
-        for (int i = 0; i < 10; i++) {
-            try {
-                lock.lock();
-                count++;
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                lock.unlock();
+        @Override
+        public void run() {
+            for (int i = 0; i < 10; i++) {
+                try {
+                    lock.lock();
+                    count++;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    lock.unlock();
+                }
             }
         }
     }
+
 }
+
+
 
