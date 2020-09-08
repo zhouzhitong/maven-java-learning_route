@@ -16,13 +16,23 @@ public class BufferDemo01 {
 
     @Test
     public void test() {
-        ByteBuffer byteBuffer = ByteBuffer.allocateDirect(1024);
-        byteBuffer.put("张三".getBytes());
+        ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
+        String str = "6212261001100235339\n" +
+                "360425199809012818\n" +
+                "1. 基于Java EE技术的学校的问卷调查系统的设计与实现\n" +
+                "2. 基于B/S架构的工厂物料管理系统的设计与实现";
+        byteBuffer.put(str.getBytes());
         int capacity = byteBuffer.capacity();
         System.out.println(capacity);
         System.out.println(byteBuffer.limit());
         System.out.println(byteBuffer.position());
+
         byteBuffer.flip();
+
+        System.out.println(capacity);
+        System.out.println(byteBuffer.limit());
+        System.out.println(byteBuffer.position());
+
         byte[] array = byteBuffer.array();
         String string = new String(array);
         System.out.println(string);
