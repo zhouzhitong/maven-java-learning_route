@@ -40,6 +40,27 @@ public class FileChannelDemo01 {
         System.out.println("总共耗费时间：--> " + (System.currentTimeMillis() - start));
     }
 
+    // 通道之间的传输
+    @Test
+    public void test3() throws IOException { // 1846ms - 1819ms  1970ms - 2019ms - 1665ms - 1811ms
+        FileChannel read = null;
+        FileChannel write = null;
+        try {
+            read = FileChannel.open(Paths.get(filePath), StandardOpenOption.READ);
+            write = FileChannel.open(Paths.get(filePath2), StandardOpenOption.WRITE, StandardOpenOption.READ, StandardOpenOption.CREATE);
+//            read.transferTo(0, read.size(), write);
+            write.transferFrom(read, 0, read.size());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            read.close();
+            write.close();
+        }
+
+    }
+
+
     @Test
     public void test2() throws IOException {// 1372ms - 1271ms
         FileChannel read = null;
