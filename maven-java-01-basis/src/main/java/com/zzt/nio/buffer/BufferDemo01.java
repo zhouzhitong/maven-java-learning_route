@@ -28,7 +28,7 @@ public class BufferDemo01 {
         System.out.println(byteBuffer.position());
 
         byteBuffer.flip();
-
+        // byteBuffer.clear();
         System.out.println(capacity);
         System.out.println(byteBuffer.limit());
         System.out.println(byteBuffer.position());
