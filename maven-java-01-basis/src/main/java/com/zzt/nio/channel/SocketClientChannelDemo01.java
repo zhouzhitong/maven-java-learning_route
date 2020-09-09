@@ -10,6 +10,8 @@ import java.nio.channels.FileChannel;
 import java.nio.channels.SocketChannel;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.Date;
+import java.util.Scanner;
 
 /**
  * 描述：<br>
@@ -23,6 +25,20 @@ public class SocketClientChannelDemo01 {
 
     private String filePathClient = "D:\\data\\client\\goddess.jpg";
 
+    // 非阻塞式 客户端
+    @Test
+    public void clientNonBlockingNioTest03() throws IOException {
+        SocketChannel channel = SocketChannel.open(new InetSocketAddress("127.0.0.1", 9988));
+        channel.configureBlocking(false);
+
+        ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
+        byteBuffer.put("再见了，朋友！！！".getBytes());
+        byteBuffer.flip();
+        channel.write(byteBuffer);
+        byteBuffer.clear();
+
+        channel.close();
+    }
 
     @Test
     public void clientTest02() throws IOException {
@@ -50,7 +66,7 @@ public class SocketClientChannelDemo01 {
         socketChannel.close();
     }
 
-    @Test
+    /*@Test
     public void clientTest01() throws IOException {
         SocketChannel socketChannel = SocketChannel.open(new InetSocketAddress("127.0.0.1", 9988));
 
@@ -65,6 +81,6 @@ public class SocketClientChannelDemo01 {
         fileChannel.close();
         System.out.println("数据发送完成！！！");
         socketChannel.close();
-    }
+    }*/
 
 }
