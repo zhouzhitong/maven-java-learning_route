@@ -16,7 +16,7 @@ import java.nio.ByteBuffer;
 public class BufferDemo01 {
 
     @Test
-    public void test01() {
+    public void byteBufferTest01() {
         // 1. 准备好Buffer -- Buffer的容量
         ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
         // 2. 准备数据
