@@ -25,8 +25,8 @@ import java.nio.file.StandardOpenOption;
  */
 public class FileChannelDemo01 {
 
-    private String filePath = "D:\\BaiduNetdiskDownload\\尚硅谷JDK8新特性+JUC+NIO\\juc\\juc.zip";
-    private String filePath2 = "D:\\aaa.zip";
+    private String filePath = "D:\\test.txt";
+    private String filePath2 = "D:\\aaa.txt";
 
     private static long start;
 
