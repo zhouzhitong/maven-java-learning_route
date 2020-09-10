@@ -33,14 +33,15 @@ public class MyFileStore {
         }
         Set<String> result = new HashSet<>(count);
         for (int i = 0; i < count; i++) {
-            result.add(getRandomNumber());
+            result.add(getName());
         }
 
         ExcelImport.saveList2Excel(new ArrayList<>(result));
     }
 
     private static class ExcelImport {
-        private static String[] titleName = {"序号", "电话号"};
+        //        private static String[] titleName = {"序号", "电话号"};
+        private static String[] titleName = {"序号", "名称"};
         private static Integer count = 1;
 
         public static void saveList2Excel(List<String> result) throws IOException {
@@ -71,6 +72,28 @@ public class MyFileStore {
 
     }
 
+    private static String[] lowercase = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o",
+            "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
+
+    private static String getName() {
+        int count1 = RandomUtil.randomInt(4, 8);
+        int count2 = RandomUtil.randomInt(4, 8);
+        String firstName;
+        String lastName;
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < count1; i++) {
+            builder.append(RandomUtil.randomEle(Arrays.asList(lowercase)));
+        }
+        firstName = builder.toString();
+        builder = new StringBuilder();
+        for (int i = 0; i < count2; i++) {
+            builder.append(RandomUtil.randomEle(Arrays.asList(lowercase)));
+        }
+        lastName = builder.toString();
+        System.out.println(firstName + " " + lastName);
+        return firstName.substring(0, 1).toUpperCase() + firstName.substring(1) + " "
+                + lastName.substring(0, 1).toUpperCase() + lastName.substring(1);
+    }
 
     private static String getRandomNumber() {
         return RandomUtil.randomInt(200, 999)
