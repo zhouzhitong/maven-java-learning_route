@@ -14,8 +14,8 @@ package com.zzt.jvm.jvms;
  */
 public class JVMStackMain {
     public static void main(String[] args) {
-        stackTest01();  // 测试：栈 和 栈帧 结构
-//        stackTest02();    // 测试： 栈内存溢出
+//        stackTest01();  // 测试：栈 和 栈帧 结构
+        stackTest02();    // 测试： 栈内存溢出 ' -Xss256K '
     }
 
     private static void stackTest01() {
