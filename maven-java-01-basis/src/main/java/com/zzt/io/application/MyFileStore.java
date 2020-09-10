@@ -12,8 +12,7 @@ import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * 描述：<br>
@@ -32,12 +31,12 @@ public class MyFileStore {
         if (args.length > 0) {
             count = Integer.valueOf(args[0]);
         }
-        List<String> result = new ArrayList<>(count);
+        Set<String> result = new HashSet<>(count);
         for (int i = 0; i < count; i++) {
             result.add(getRandomNumber());
         }
 
-        ExcelImport.saveList2Excel(result);
+        ExcelImport.saveList2Excel(new ArrayList<>(result));
     }
 
     private static class ExcelImport {
