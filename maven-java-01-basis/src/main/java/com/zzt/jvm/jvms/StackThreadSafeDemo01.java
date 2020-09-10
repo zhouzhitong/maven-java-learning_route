@@ -15,8 +15,8 @@ import java.util.Random;
 public class StackThreadSafeDemo01 {
 
     public static void main(String[] args) throws InterruptedException {
-//        stackThreadSafeTest01();
-        stackThreadSafeTest02();
+//        stackThreadSafeTest01();  // 测试：局部变量 的线程安全问题
+        stackThreadSafeTest02();    // 测试：共享变量 的线程安全问题
     }
 
 
