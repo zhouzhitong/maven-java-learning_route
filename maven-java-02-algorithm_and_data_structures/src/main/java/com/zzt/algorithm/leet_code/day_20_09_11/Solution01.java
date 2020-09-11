@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * 描述：<br>216. 组合总和III
- *     网址：https://leetcode-cn.com/problems/combination-sum-iii/comments/
+ * 网址：https://leetcode-cn.com/problems/combination-sum-iii/comments/
  * </>
  *
  * @author 周志通
@@ -25,9 +25,10 @@ public class Solution01 {
 
     /**
      * 递归
+     *
      * @param count 已经添加的个数
-     * @param ans 还需要的添加数值
-     * @param list 存储集合
+     * @param ans   还需要的添加数值
+     * @param list  存储集合
      * @param index 最近添加的值
      */
     public void dfs(int count, int ans, List<Integer> list, int index) {
@@ -36,11 +37,9 @@ public class Solution01 {
             return;
         }
         for (int i = index + 1; i < 10 && i <= ans; i++) {
-            if (ans - i >= 0) {
-                list.add(i);
-                dfs(count + 1, ans - i, list, i);
-                list.remove(list.size() - 1);
-            }
+            list.add(i);
+            dfs(count + 1, ans - i, list, i);
+            list.remove(list.size() - 1);
         }
     }
 
