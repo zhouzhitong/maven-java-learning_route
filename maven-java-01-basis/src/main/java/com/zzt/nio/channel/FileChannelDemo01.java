@@ -25,8 +25,8 @@ import java.nio.file.StandardOpenOption;
  */
 public class FileChannelDemo01 {
 
-    private String filePath = "D:\\test.txt";
-    private String filePath2 = "D:\\aaa.txt";
+    private String filePath = "D:\\apache-maven-3.6.3.rar";
+    private String filePath2 = "D:\\aaa.rar";
 
     private static long start;
 
@@ -109,7 +109,7 @@ public class FileChannelDemo01 {
         FileChannel iChannel = fileInputStream.getChannel();
         FileChannel oChannel = fileOutputStream.getChannel();
 
-        ByteBuffer buffer = ByteBuffer.allocateDirect(1024);
+        ByteBuffer buffer = ByteBuffer.allocateDirect(1024*1024);
         while ((iChannel.read(buffer)) != -1) {
             buffer.flip();
             oChannel.write(buffer);
