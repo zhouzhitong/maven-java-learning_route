@@ -7,6 +7,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 /**
  * 描述：<br> DOC 方式
+ *      Dom操作xml
  * </>
  *
  * @author 周志通

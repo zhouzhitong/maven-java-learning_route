@@ -10,7 +10,11 @@ import javax.xml.parsers.SAXParserFactory;
 import java.io.IOException;
 
 /**
- * 描述：<br> SAX 方式
+ * 描述：<br> 2. SAX 方式
+ * SAX解析DOM
+ * 一行一行  Handler
+ * startElement
+ * endElement
  * </>
  *
  * @author 周志通
@@ -27,7 +31,7 @@ public class SaxXmlDemo02 {
         SAXParser saxParser = factory.newSAXParser();
         //创建Handel对象
         SAXDemoHandel handel = new SAXDemoHandel();
-        saxParser.parse("src/main/resources/demo.xml",handel);
+        saxParser.parse("src/main/resources/demo.xml", handel);
     }
 
     private static class SAXDemoHandel extends DefaultHandler {
