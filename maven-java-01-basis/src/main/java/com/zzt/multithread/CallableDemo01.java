@@ -28,16 +28,17 @@ public class CallableDemo01 {
         }
         System.out.println(task.isCancelled()?task.get():"被取消了~~~");
     }
-}
-
-class MyCallable implements Callable<String> {
-    @Override
-    public String call() throws Exception {
-        for (int i = 0; i < 10; i++) {
-            Thread.sleep(100);
-            System.out.println("MyCallable正在执行：" + new Date().getTime());
+    private static class MyCallable implements Callable<String> {
+        @Override
+        public String call() throws Exception {
+            for (int i = 0; i < 10; i++) {
+                Thread.sleep(100);
+                System.out.println("MyCallable正在执行：" + new Date().getTime());
+            }
+            return "MyCallable执行完毕！";
         }
-        return "MyCallable执行完毕！";
     }
 }
+
+
 

@@ -19,20 +19,19 @@ public class ThreadTestDemo01 {
         t3.start();
 
     }
+    private static class MyThread extends Thread {
+        //    private static volatile Integer count = 0;
+        private static Integer count = 0;
 
-}
+        public MyThread() {
+        }
 
-class MyThread extends Thread {
-    //    private static volatile Integer count = 0;
-    private static Integer count = 0;
-
-    public MyThread() {
-    }
-
-    @Override
-    public void run() {
-        for (int i = 0; i < 20; i++) {
-            System.out.println("执行次数：--> " + i + "（剩余次数：--> " + (++count) + "）");
+        @Override
+        public void run() {
+            for (int i = 0; i < 20; i++) {
+                System.out.println("执行次数：--> " + i + "（剩余次数：--> " + (++count) + "）");
+            }
         }
     }
 }
+

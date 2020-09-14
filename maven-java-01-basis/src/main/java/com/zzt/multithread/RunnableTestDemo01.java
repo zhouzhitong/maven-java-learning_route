@@ -18,21 +18,21 @@ public class RunnableTestDemo01 {
         t2.start();
         t3.start();
     }
+    private static class MyRunnable implements Runnable{
 
-}
+        //    private static volatile Integer count = 0;
+        private static Integer count = 0;
 
-class MyRunnable implements Runnable{
+        public MyRunnable(){
+        }
 
-    //    private static volatile Integer count = 0;
-    private static Integer count = 0;
-
-    public MyRunnable(){
-    }
-
-    @Override
-    public void run() {
-        for (int i = 0; i < 20; i++) {
-            System.out.println("执行次数：--> " + i + "（剩余次数：--> " + (++count) + "）");
+        @Override
+        public void run() {
+            for (int i = 0; i < 20; i++) {
+                System.out.println("执行次数：--> " + i + "（剩余次数：--> " + (++count) + "）");
+            }
         }
     }
+
 }
+
