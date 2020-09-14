@@ -6,7 +6,7 @@
         <nickname>stars1</nickname>
         <marks>85</marks>
     </student>
-    <student rollno="493">
+    <student rollno="493" rollback="YES">
         <firstname>cxx2</firstname>
         <lastname>Bob2</lastname>
         <nickname>stars2</nickname>
