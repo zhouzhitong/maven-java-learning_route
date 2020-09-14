@@ -1,6 +1,7 @@
 package com.zzt.algorithm.leet_code.day_20_09_07;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.PriorityQueue;
 
@@ -20,11 +21,13 @@ public class Solution01 {
             map.put(nums[i], map.getOrDefault(nums[i], 0) + 1);
         }
         PriorityQueue<Integer> heap = new PriorityQueue<>(
-                ((o1, o2) -> map.get(o1) - map.get(o2))
+                (Comparator.comparingInt(map::get))
         );
         for (int num : map.keySet()) {
             heap.add(num);
-            if (heap.size() > k) heap.poll();
+            if (heap.size() > k) {
+                heap.poll();
+            }
         }
         int[] result = new int[heap.size()];
         for (int i = 0; i < result.length; i++) {
