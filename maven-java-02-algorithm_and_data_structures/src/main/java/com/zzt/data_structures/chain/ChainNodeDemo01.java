@@ -1,4 +1,4 @@
-package com.zzt.algorithm.chain;
+package com.zzt.data_structures.chain;
 
 import org.junit.jupiter.api.Test;
 
