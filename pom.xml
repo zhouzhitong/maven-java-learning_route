@@ -14,6 +14,7 @@
         <module>maven-java-02-algorithm_and_data_structures</module>
         <module>maven-java-03-advanced</module>
         <module>maven-java-04-mysql</module>
+        <module>maven-java-07-spring-code-5_2_9</module>
     </modules>
 
     <dependencies>
