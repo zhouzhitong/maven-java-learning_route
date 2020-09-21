@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  * @version 1.0.0
  * @date 2020/9/19 8:40
  **/
-@Component
+//@Component
 public class A {
 
     private String name;
