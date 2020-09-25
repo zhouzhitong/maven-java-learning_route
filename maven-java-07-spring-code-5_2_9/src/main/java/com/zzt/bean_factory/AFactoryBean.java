@@ -1,6 +1,7 @@
 package com.zzt.bean_factory;
 
 import com.zzt.bean.A;
+import com.zzt.bean.B;
 import org.springframework.beans.factory.FactoryBean;
 
 /**
@@ -15,10 +16,8 @@ public class AFactoryBean implements FactoryBean<A> {
 
     private A a;
 
-    public AFactoryBean(String name, Integer age) {
-        this.a = new A();
-        this.a.setName(name);
-        this.a.setAge(age);
+    public AFactoryBean(String name, Integer age, B b) {
+        this.a = new A(name,age,b);
     }
 
     @Override

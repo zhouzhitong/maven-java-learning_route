@@ -4,17 +4,19 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <!--<bean id="a" class="com.zzt.bean.A">
+
+    <bean id="b" class="com.zzt.bean.B">
+        <property name="name" value="李四"/>
+    </bean>
+    <bean id="a" class="com.zzt.bean.A">
         <property name="name" value="张三"/>
         <property name="age" value="12"/>
-    </bean>-->
-    <bean id="b" class="com.zzt.bean.B">
-
+        <property name="b" ref="b"/>
     </bean>
-
-    <bean id="aFactoryBean" class="com.zzt.bean_factory.AFactoryBean">
+    <!--<bean id="aFactoryBean" class="com.zzt.bean_factory.AFactoryBean">
         <constructor-arg name="name" value="张三"/>
         <constructor-arg name="age" value="123"/>
-    </bean>
+        <constructor-arg name="b" ref="b"/>
+    </bean>-->
 
 </beans>

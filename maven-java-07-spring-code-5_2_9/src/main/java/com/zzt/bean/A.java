@@ -15,13 +15,14 @@ public class A {
 
     private String name;
     private Integer age;
-
+    private B b;
     public A() {
     }
 
-    public A(String name, Integer age) {
+    public A(String name, Integer age,B b) {
         this.name = name;
         this.age = age;
+        this.b = b;
     }
 
     public String getName() {
@@ -40,6 +41,14 @@ public class A {
         this.age = age;
     }
 
+    public B getB() {
+        return b;
+    }
+
+    public void setB(B b) {
+        this.b = b;
+    }
+
     @Override
     public String toString() {
         return "A{" +
@@ -47,4 +56,5 @@ public class A {
                 ", age=" + age +
                 '}';
     }
+
 }
