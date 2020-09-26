@@ -23,7 +23,10 @@ public class UserServiceProxy implements MethodInterceptor {
     }
 
     /**
-     * prxoyobj:被代理的原始对象 method：被代理的原始方法 arg：运行期的参数 methodProxy：产生的代理方法
+     * prxoyobj:被代理的原始对象
+     * method：被代理的原始方法
+     * arg：运行期的参数
+     * methodProxy：产生的代理方法
      */
     @Override
     public Object intercept(Object prxoyobj, Method method, Object[] arg, MethodProxy methodProxy) throws Throwable {
