@@ -1,5 +1,7 @@
 package com.zzt.data_structures.tree;
 
+import java.util.Objects;
+
 /**
  * 描述：<br>
  * </>
@@ -22,5 +24,17 @@ public class Tree {
         return "Tree{" +
                 "val=" + val +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Tree tree = (Tree) o;
+        return val == tree.val;
     }
 }
