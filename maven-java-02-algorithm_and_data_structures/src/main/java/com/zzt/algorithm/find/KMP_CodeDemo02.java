@@ -16,14 +16,18 @@ public class KMP_CodeDemo02 {
         char[] str = s.toCharArray();
         char[] match = m.toCharArray();
         int[] arr = getArr(match);
-        System.out.println(Arrays.toString(arr));
         int p1 = 0, p2 = 0;
         while (p1 < s.length() && p2 < m.length()) {
-
+            if (str[p1] == match[p2]) {
+                p1++;
+                p2++;
+            } else if (p2 == 0) {
+                p1++;
+            } else {
+                p2 = arr[p2];
+            }
         }
-
-
-        return -1;
+        return p2 == m.length() ? p1 - p2 : -1;
     }
 
     private static int[] getArr(char[] m) {
@@ -57,8 +61,8 @@ public class KMP_CodeDemo02 {
     }
 
     public static void main(String[] args) {
-        String s = "";
-        String m = "abcabcd";
+        String s = "abcabcabcabcddd";
+        String m = "abcddd";
         int match = match(s, m);
         System.out.println(match);
     }
