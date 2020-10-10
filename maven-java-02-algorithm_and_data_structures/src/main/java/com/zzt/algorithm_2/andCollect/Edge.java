@@ -1,4 +1,4 @@
-package com.zzt.data_structures.and_collect;
+package com.zzt.algorithm_2.andCollect;
 
 public class Edge {
 	public int weight;
