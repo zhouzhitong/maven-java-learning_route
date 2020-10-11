@@ -59,7 +59,6 @@ public class InsertSortDemo {
                 arr[j] = temp;
                 i++;
             }
-
         }
 
         private static void swap(int[] arr, int i, int j) {
