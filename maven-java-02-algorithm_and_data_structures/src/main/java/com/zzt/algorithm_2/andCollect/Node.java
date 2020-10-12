@@ -1,36 +1,28 @@
 package com.zzt.algorithm_2.andCollect;
 
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * 描述：<br>
+ * 描述：<br>点结构描述： A  0
  * </>
  *
  * @author 周志通
  * @version 1.0.0
  * @date 2020/10/10 9:22
  */
-public class Node<V> {
-    public V v;
+public class Node {
+    public int value;
+    public int in;
+    public int out;
+    public List<Node> nexts;
+    public List<Edge> edges;
 
-    public Node(V v) {
-        this.v = v;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Node<?> node = (Node<?>) o;
-        return v.equals(node.v);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(v);
+    public Node(int value) {
+        this.value = value;
+        in = 0;
+        out = 0;
+        nexts = new ArrayList<>();
+        edges = new ArrayList<>();
     }
 }

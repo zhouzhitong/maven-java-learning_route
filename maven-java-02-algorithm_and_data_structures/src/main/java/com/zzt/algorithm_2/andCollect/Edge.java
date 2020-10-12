@@ -1,5 +1,8 @@
 package com.zzt.algorithm_2.andCollect;
 
+/**
+ * 边 结构描述
+ */
 public class Edge {
 	public int weight;
 	public Node from;
