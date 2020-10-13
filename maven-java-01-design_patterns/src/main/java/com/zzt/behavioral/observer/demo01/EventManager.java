@@ -22,7 +22,11 @@ public class EventManager {
         listeners.add(listener);
     }
 
-    public void notify(String data){
+    public void updateData(String data){
+        notify(data);
+    }
+
+    private void notify(String data){
         for (EventListener listener : listeners) {
             listener.update(data);
         }

@@ -26,9 +26,11 @@ public class Solution_024 {
     }
 
     private void swap(ListNode l1, ListNode l2) {
-        int val = l1.val;
-        l1.val = l2.val;
-        l2.val = val;
+        if (l1.val != l2.val) {
+            l1.val = l1.val ^ l2.val;
+            l2.val = l1.val ^ l2.val;
+            l1.val = l1.val ^ l2.val;
+        }
     }
 
 

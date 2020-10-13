@@ -18,13 +18,15 @@ public class Client {
         manager.subscribe(listener);
         listener = new LoggingListener(2);
         manager.subscribe(listener);
+        manager.updateData("C:\\abc");
+        System.out.println("========================");
         listener = new LoggingListener(3);
         manager.subscribe(listener);
 
         listener = new EmailAlterListener(1);
         manager.subscribe(listener);
 
-        manager.notify("C:\\abc");
+        manager.updateData("C:\\abc");
 
     }
 
