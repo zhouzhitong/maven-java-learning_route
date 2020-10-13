@@ -19,13 +19,13 @@ public class Solution_129 {
         if (node == null) {
             return 0;
         }
+        int t = val * 10 + node.val;
         if (node.left == null && node.right == null) {
-            return val * 10 + node.val;
+            return t;
         } else {
-            int t = val * 10 + node.val;
-            int left = dfs(node.left, t);
-            int right = dfs(node.right, t);
-            return left + right;
+//            int left = dfs(node.left, t);
+//            int right = dfs(node.right, t);
+            return dfs(node.left, t) + dfs(node.right, t);
         }
     }
 
