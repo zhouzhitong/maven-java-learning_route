@@ -24,9 +24,6 @@ public class Solution_129 {
         } else {
             int t = val * 10 + node.val;
             int left = dfs(node.left, t);
-            if (left == t) {
-                left = 0;
-            }
             int right = dfs(node.right, t);
             return left + right;
         }
