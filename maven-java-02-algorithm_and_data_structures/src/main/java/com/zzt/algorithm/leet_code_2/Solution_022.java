@@ -55,7 +55,8 @@ public class Solution_022 {
 
     public static void main(String[] args) {
         int n = 3;
-
+        List<String> list = new Solution_022().generateParenthesis(n);
+        System.out.println(list);
     }
 
 }

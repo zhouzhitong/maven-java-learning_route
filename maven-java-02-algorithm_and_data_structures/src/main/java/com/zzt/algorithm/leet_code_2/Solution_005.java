@@ -1,7 +1,5 @@
 package com.zzt.algorithm.leet_code_2;
 
-import com.zzt.algorithm.leet_code_3.Solution_530;
-
 /**
  * 描述：<br> 5. 最长回文子串
  * https://leetcode-cn.com/problems/longest-palindromic-substring/
