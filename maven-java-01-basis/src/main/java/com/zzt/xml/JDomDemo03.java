@@ -22,7 +22,7 @@ import java.util.List;
  * @version 1.0.0
  * @date 2020/9/14 13:43
  */
-public class JDomDemo03 {
+public class  JDomDemo03 {
 
     public static void main(String[] args) throws Exception {
         //1.创建SAXBuilder对象

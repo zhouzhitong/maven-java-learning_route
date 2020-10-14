@@ -15,11 +15,13 @@ import java.util.Arrays;
 public class FastSortDemo03 {
 
     public static void main(String[] args) {
+        int[] arr = {64, 97, 65, 0, 9, 55, 74};
+
 //        int[] arr = {9, 7, 8, 6, 3, 3, 6, 8, 9, 12, 17, 1, 2, 5};
 //        int[] arr = {6, 5, 4, 3, 2, 1};
-//        FastSort.sort(arr);
-//        System.out.println(Arrays.toString(arr));
-        test01();
+        FastSort.sort(arr);
+        System.out.println(Arrays.toString(arr));
+//        test01();
     }
 
     private static void test01() {
