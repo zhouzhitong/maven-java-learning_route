@@ -1,7 +1,6 @@
 package com.zzt.algorithm.leet_code_6;
 
 import com.zzt.algorithm.data_structures.TreeNode;
-import com.zzt.data_structures.tree.Tree;
 
 import java.util.LinkedList;
 import java.util.Queue;
