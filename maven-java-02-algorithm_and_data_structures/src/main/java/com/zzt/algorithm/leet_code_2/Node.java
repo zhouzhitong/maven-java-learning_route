@@ -27,4 +27,10 @@ public class Node {
         right = _right;
         next = _next;
     }
+
+    @Override
+    public String toString() {
+        return " " + val + ", " + left + ", "
+                + right + ", ";
+    }
 };
