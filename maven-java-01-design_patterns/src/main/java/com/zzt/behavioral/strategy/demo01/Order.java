@@ -6,6 +6,9 @@ package com.zzt.behavioral.strategy.demo01;
  * to strategy object. It can be used to save order to database.
  */
 public class Order {
+    /**
+     * 订单总金额
+     */
     private int totalCost = 0;
     private boolean isClosed = false;
 
