@@ -16,6 +16,25 @@ public class Solution_977 {
 
     public int[] sortedSquares(int[] a) {
         int[] t = new int[a.length];
+        int i = 0, j = a.length - 1;
+        int len = j;
+        int left, right;
+        while (len > -1) {
+            left = a[i] * a[i];
+            right = a[j] * a[j];
+            if (left > right) {
+                t[len--] = left;
+                i++;
+            } else {
+                t[len--] = right;
+                j--;
+            }
+        }
+        return t;
+    }
+
+    /*public int[] sortedSquares(int[] a) {
+        int[] t = new int[a.length];
         int i = 0;
         for (int j : a) {
             if (j >= 0) {
@@ -43,7 +62,7 @@ public class Solution_977 {
             t[m++] = a[j] * a[j--];
         }
         return t;
-    }
+    }*/
 
     /*public int[] sortedSquares(int[] a) {
         PriorityQueue<Integer> queue = new PriorityQueue<>();
