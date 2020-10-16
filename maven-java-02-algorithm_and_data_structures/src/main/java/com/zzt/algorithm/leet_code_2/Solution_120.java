@@ -1,5 +1,6 @@
 package com.zzt.algorithm.leet_code_2;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,6 +34,32 @@ public class Solution_120 {
 
 
     public static void main(String[] args) {
+        List<List<Integer>> triangle = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
+        list.add(2);
+        triangle.add(list);
+
+        list = new ArrayList<>();
+        list.add(3);
+        list.add(4);
+        triangle.add(list);
+
+        list = new ArrayList<>();
+        list.add(6);
+        list.add(5);
+        list.add(7);
+        triangle.add(list);
+
+        list = new ArrayList<>();
+        list.add(4);
+        list.add(1);
+        list.add(8);
+        list.add(3);
+        triangle.add(list);
+
+        int i = new Solution_120().minimumTotal(triangle);
+        System.out.println(i);
+
 
     }
 
