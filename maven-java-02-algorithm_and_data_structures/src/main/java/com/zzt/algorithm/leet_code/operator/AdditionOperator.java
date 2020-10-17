@@ -20,6 +20,8 @@ public class AdditionOperator {
     }
 
     public static void main(String[] args) {
+        // 4  :  00000100
+        // 7  :  00000111
         int x = 4, y = 7;
         System.out.println(new AdditionOperator().addition(x, y));
     }
