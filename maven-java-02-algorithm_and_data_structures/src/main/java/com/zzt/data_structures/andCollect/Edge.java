@@ -1,4 +1,4 @@
-package com.zzt.algorithm_2.andCollect;
+package com.zzt.data_structures.andCollect;
 
 /**
  * 边 结构描述

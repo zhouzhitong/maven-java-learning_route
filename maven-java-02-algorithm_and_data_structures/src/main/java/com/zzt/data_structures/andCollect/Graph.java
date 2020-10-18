@@ -1,4 +1,4 @@
-package com.zzt.algorithm_2.andCollect;
+package com.zzt.data_structures.andCollect;
 
 import java.util.HashMap;
 import java.util.HashSet;
