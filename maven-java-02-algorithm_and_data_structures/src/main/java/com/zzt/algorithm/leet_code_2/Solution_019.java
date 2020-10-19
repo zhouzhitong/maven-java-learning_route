@@ -1,59 +1,55 @@
 package com.zzt.algorithm.leet_code_2;
 
-import java.util.ArrayList;
+import com.zzt.algorithm.data_structures.ListNode;
+
 import java.util.List;
 
 /**
- * 描述：<br> 19. 秋叶收藏集
- * 网址：https://leetcode-cn.com/problems/UlBDOe/
+ * 描述：<br>19. 删除链表的倒数第N个节点
+ * https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/
  * </>
  *
  * @author 周志通
  * @version 1.0.0
- * @date 2020/10/8 15:51
+ * @date 2020/10/19 22:51
  **/
 public class Solution_019 {
-    public int minimumOperations(String leaves) {
-        int result = 0;
-        char[] cs = leaves.toCharArray();
-        List<Integer> listCount = new ArrayList<>();
-        if (cs[0] != 'r') {
-            cs[0] = 'r';
-            result++;
-        }
-        if (cs[cs.length - 1] != 'r') {
-            cs[cs.length - 1] = 'r';
-            result++;
-        }
-        int i = 0;
-        while (i < cs.length) {
-            char c = cs[i++];
-            int count = 1;
-            while (i < cs.length && cs[i] == c) {
-                i++;
-                count++;
+    private ListNode root;
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        if (head.next != null) {
+            dfs(head, null, n);
+        } else {
+            if (n == 1) {
+                return null;
             }
-            listCount.add(count);
         }
-        if (listCount.size() == 1) {
-            return 3;
+        return root!=null?root:head;
+    }
+
+    private int dfs(ListNode node, ListNode parent, int n) {
+        if (node == null) {
+            return 0;
         }
-        System.out.println(listCount.size());
-        System.out.println(listCount);
-        int len = listCount.size() - 2;
-        int r = 0, y = 0;
-        int count = 2;
-        for (int j = 1; j < len; ) {
-            y += listCount.get(j++);
-            r += listCount.get(j++);
+        int t = dfs(node.next, node, n) + 1;
+        if (t == n) {
+            if (parent != null) {
+                parent.next = node.next;
+            } else {
+                 root= node.next;
+            }
         }
-        return result + Math.min(r, y);
+        return t;
     }
 
     public static void main(String[] args) {
-        String leaves = "ryyryyyrryyyyyryyyrrryyyryryyyyryyrrryryyyryrryrrrryyyrrrrryryyrrrrryyyryyryrryryyryyyyryyrryrryryy";
-        int i = new Solution_019().minimumOperations(leaves);
-        System.out.println(i);
+        ListNode head = new ListNode(1);
+        head.next = new ListNode(2);
+//        head.next.next = new ListNode(3);
+//        head.next.next.next = new ListNode(4);
+//        head.next.next.next.next = new ListNode(5);
+        ListNode listNode = new Solution_019().removeNthFromEnd(head, 2);
+        System.out.println("==============");
+        System.out.println(listNode);
     }
 
 }
