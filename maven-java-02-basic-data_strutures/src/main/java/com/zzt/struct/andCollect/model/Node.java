@@ -1,7 +1,6 @@
 package com.zzt.struct.andCollect.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
 
 /**
  * 描述：<br>节点信息
@@ -9,36 +8,38 @@ import java.util.List;
  *
  * @author 周志通
  * @version 1.0.0
- * @date 2020/10/20 18:05
- */
-public class Node<T,E> {
-    // 节点值
-    public T val;
-    /**
-     * 入度数
-     */
-    public Integer in;
-    /**
-     * 出度数
-     */
-    public Integer out;
-    /**
-     * 下一个节点
-     */
-    public List<Node<T,E>> nexts;
-    /**
-     * 边界属性（出度的）
-     */
-    public List<Edge<E>> edges;
+ * @date 2020/10/20 21:52
+ **/
+public class Node<V> {
 
-    public Node(T val) {
-        this.val = val;
-        in = 0;
-        out = 0;
-        nexts = new ArrayList<>();
-        edges = new ArrayList<>();
+    public V v;
+
+    public Node(V v) {
+        this.v = v;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
+        Node<?> node = (Node<?>) o;
+        return Objects.equals(v, node.v);
+    }
 
+    @Override
+    public int hashCode() {
+        return v != null ? v.hashCode() : 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Node{" +
+                "v=" + v +
+                '}';
+    }
 }
