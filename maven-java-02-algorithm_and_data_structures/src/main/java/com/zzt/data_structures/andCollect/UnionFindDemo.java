@@ -20,8 +20,8 @@ public class UnionFindDemo {
         private HashMap<Node, Integer> sizeMap;
 
         public UnionFind() {
-            fatherMap = new HashMap<Node, Node>();
-            sizeMap = new HashMap<Node, Integer>();
+            fatherMap = new HashMap<>();
+            sizeMap = new HashMap<>();
         }
 
         public void makeSets(Collection<Node> nodes) {

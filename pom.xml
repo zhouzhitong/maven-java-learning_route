@@ -15,6 +15,7 @@
         <module>maven-java-03-advanced</module>
         <module>maven-java-04-mysql</module>
         <module>maven-java-07-spring-code-5_2_9</module>
+        <module>maven-java-02-basic-data_strutures</module>
     </modules>
 
     <dependencies>
@@ -25,7 +26,13 @@
             <version>1.18.12</version>
             <scope>provided</scope>
         </dependency>
-
+        <!-- 测试单元 -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
 
