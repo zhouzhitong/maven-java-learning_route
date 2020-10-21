@@ -16,6 +16,7 @@
         <module>maven-java-04-mysql</module>
         <module>maven-java-07-spring-code-5_2_9</module>
         <module>maven-java-02-basic-data_strutures</module>
+        <module>maven-java-02-algorithm-leetcode</module>
     </modules>
 
     <dependencies>
