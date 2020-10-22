@@ -9,4 +9,9 @@ package com.zzt;
  * @date 2020/10/21 9:32
  */
 public class Main {
+
+    public static void main(String[] args) {
+
+    }
+
 }
