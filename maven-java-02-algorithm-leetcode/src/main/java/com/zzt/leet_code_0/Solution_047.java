@@ -1,4 +1,4 @@
-package com.zzt.leet_code_1;
+package com.zzt.leet_code_0;
 
 import org.junit.jupiter.api.Test;
 
