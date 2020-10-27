@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>maven-java-07-spring-code-5_2_9</artifactId>
+    <artifactId>maven-java-08-spring-code_extend</artifactId>
 
     <properties>
         <spring.version>5.2.9.RELEASE</spring.version>
@@ -34,13 +34,6 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aspects</artifactId>
             <version>${spring.version}</version>
         </dependency>
 

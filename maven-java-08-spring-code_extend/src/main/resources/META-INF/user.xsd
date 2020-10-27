@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.mashibing.com/schema/user"
+        xmlns:tns="http://www.mashibing.com/schema/user"
+        elementFormDefault="qualified">
+
+    <element name="user">
+        <complexType>
+            <attribute name="id" type="string" default="1108"/>
+            <attribute name="username" type="string" default="张三"/>
+            <attribute name="password" type="string" default="root@hiekn"/>
+            <attribute name="email" type="string" default="528382226@qq.com"/>
+        </complexType>
+
+    </element>
+
+</schema>
+
