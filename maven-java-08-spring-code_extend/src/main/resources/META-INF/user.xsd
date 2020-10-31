@@ -6,7 +6,8 @@
 
     <element name="user">
         <complexType>
-            <attribute name="id" type="string" default="1108"/>
+            <!-- TODO 必须存在 id 属性，作为 bean的定义信息  -->
+            <attribute name="id" type="string" default="user"/>
             <attribute name="username" type="string" default="张三"/>
             <attribute name="password" type="string" default="root@hiekn"/>
             <attribute name="email" type="string" default="528382226@qq.com"/>

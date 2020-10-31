@@ -22,7 +22,7 @@ public class UserBeanDefinitionParser extends AbstractSingleBeanDefinitionParser
 
     @Override
     protected void doParse(Element element, BeanDefinitionBuilder builder) {
-        super.doParse(element, builder);
+//        super.doParse(element, builder);
         String username = element.getAttribute("username");
         String password = element.getAttribute("password");
         String email = element.getAttribute("email");

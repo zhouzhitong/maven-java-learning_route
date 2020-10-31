@@ -18,11 +18,11 @@ public class SpringCodeExtendMain {
 
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application.xml");
 
-//        User user = applicationContext.getBean("myTag",User.class);
-//        System.out.println(user);
+        User user = applicationContext.getBean("user",User.class);
+        System.out.println(user);
 
-        User testBean = (User) applicationContext.getBean("1108");
-        System.out.println(testBean);
+//        User testBean = (User) applicationContext.getBean("1108");
+//        System.out.println(testBean);
 
     }
 }
