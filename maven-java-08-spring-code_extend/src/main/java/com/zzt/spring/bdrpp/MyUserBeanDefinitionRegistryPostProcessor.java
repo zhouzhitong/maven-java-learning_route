@@ -2,6 +2,7 @@ package com.zzt.spring.bdrpp;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
+import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProcessor;
@@ -19,6 +20,10 @@ import org.springframework.core.PriorityOrdered;
  *      postProcessBeanFactory(ConfigurableListableBeanFactory) {
  *          super.addBeanFactoryPostProcessor(new MyUserBeanDefinitionRegistryPostProcessor());
  *      }
+ * - 3. 通过 BeanFactoryPostProcessor 接口中的方法实现 （TODO 试验过程中未通过）
+ * @see BeanFactoryPostProcessor#postProcessBeanFactory(ConfigurableListableBeanFactory)
+ *
+ *
  * </>
  *
  * @author 周志通
