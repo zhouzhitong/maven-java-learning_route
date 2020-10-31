@@ -12,7 +12,7 @@
 
     <myTag:user username="root"/>
     <context:property-placeholder location="db.properties"/>
-
+<!--    <bean class="com.zzt.spring.bdrpp.MyUserBeanDefinitionRegistryPostProcessor"/>-->
     <bean id="testBean" class="com.zzt.spring.bean.TestBean">
         <property name="username" value="${username}"/>
         <property name="password" value="${password}"/>
