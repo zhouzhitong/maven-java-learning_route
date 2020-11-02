@@ -8,7 +8,8 @@ import java.util.List;
 import java.util.Queue;
 
 /**
- * 描述：<br>
+ * 描述：<br>剑指 Offer 59 - II. 队列的最大值
+ *     https://leetcode-cn.com/problems/dui-lie-de-zui-da-zhi-lcof/
  * </>
  *
  * @author 周志通
