@@ -2,7 +2,8 @@ package com.zzt.leet_code_9;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Comparator;
 
 /**
  * 描述：<br>973. 最接近原点的 K 个点
@@ -19,7 +20,7 @@ public class Solution_973 {
         if (points.length <= K) {
             return points;
         }
-        Arrays.sort(points,Comparator.comparingInt(v -> (v[0] * v[0] + v[1] * v[1])));
+        Arrays.sort(points, Comparator.comparingInt(v -> (v[0] * v[0] + v[1] * v[1])));
         int[][] result = new int[K][2];
         int index = 0;
         while (index < K) {
