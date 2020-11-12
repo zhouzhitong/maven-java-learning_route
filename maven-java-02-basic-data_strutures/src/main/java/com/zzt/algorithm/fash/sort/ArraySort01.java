@@ -12,11 +12,16 @@ import java.util.Arrays;
  * @version 1.0.0
  * @date 2020/10/20 22:36
  **/
-public class ArraySort {
+public class ArraySort01 {
 
     public static void main(String[] args) {
-        for (int i = 0; i < 100000; i++) {
-            int[] arr = Logarithm.getArr(10, 100);
+
+        /*int[] arr = {74, 36, 99, 72, 91, 96, 68, 95, 63};
+        sort(arr);
+        System.out.println(Arrays.toString(arr));*/
+
+        for (int i = 0; i < 1000; i++) {
+            int[] arr = Logarithm.getArr(100);
             int[] sourceData = Arrays.copyOf(arr, arr.length);
             int[] comparativeData = Arrays.copyOf(arr, arr.length);
             Arrays.sort(comparativeData);
@@ -35,7 +40,7 @@ public class ArraySort {
 
     public static void sort(int[] arr) {
         if (arr.length <= 1) {
-            return ;
+            return;
         }
         process(arr, 0, arr.length - 1);
     }
@@ -44,31 +49,37 @@ public class ArraySort {
         if (l >= r) {
             return;
         }
-        int i = doSort(arr, l, r);
-        process(arr, l, i - 1);
-        process(arr, i + 1, r);
-
+        int target = doSort(arr, l, r);
+        process(arr, l, target - 1);
+        process(arr, target + 1, r);
     }
 
-
     private static int doSort(int[] arr, int l, int r) {
-        int temp = arr[l];
+        int target = arr[l];
+        int low = l;
         while (l < r) {
-            if (arr[l] < temp) {
+            while (target <= arr[r] && l < r) {
+                r--;
+            }
+            while (target >= arr[l] && l < r) {
                 l++;
-            } else if (arr[l] > temp) {
+            }
+            if (l < r) {
                 swap(arr, l, r--);
-            } else {
-                swap(arr, l, arr[l] != arr[r] ? r : r--);
             }
         }
-        return l;
+        arr[low] = arr[l];
+        arr[l] = target;
+        return r;
     }
 
     public static void swap(int[] arr, int i, int j) {
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
+        if (arr[i] == arr[j]) {
+            return;
+        }
+        arr[i] = arr[i] ^ arr[j];
+        arr[j] = arr[i] ^ arr[j];
+        arr[i] = arr[i] ^ arr[j];
     }
 
 }
