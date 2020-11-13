@@ -1,4 +1,4 @@
-package com.zzt.algorithm.fash.sort;
+package com.zzt.algorithm.sort.fast;
 
 import com.zzt.logarithm.Logarithm;
 
