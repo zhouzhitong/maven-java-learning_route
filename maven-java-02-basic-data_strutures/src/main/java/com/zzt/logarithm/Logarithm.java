@@ -3,7 +3,7 @@ package com.zzt.logarithm;
 import java.util.Random;
 
 /**
- * 描述：<br>
+ * 描述：<br>对数器
  * </>
  *
  * @author 周志通
