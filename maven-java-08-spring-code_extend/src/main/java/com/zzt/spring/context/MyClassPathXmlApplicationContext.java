@@ -1,6 +1,8 @@
 package com.zzt.spring.context;
 
 import com.zzt.spring.bdrpp.MyUserBeanDefinitionRegistryPostProcessor;
+import com.zzt.spring.selfEditor.Address;
+import com.zzt.spring.selfEditor.AddressPropertyEditor;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -22,8 +24,20 @@ public class MyClassPathXmlApplicationContext extends ClassPathXmlApplicationCon
     @Override
     protected void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) {
         super.postProcessBeanFactory(beanFactory);
-        super.addBeanFactoryPostProcessor(new MyUserBeanDefinitionRegistryPostProcessor());
+//        super.addBeanFactoryPostProcessor(new MyUserBeanDefinitionRegistryPostProcessor());
+        // TODO 自定义属性编辑器注册 -- 方式三
+        beanFactory.registerCustomEditor(Address.class, AddressPropertyEditor.class);
     }
 
+    @Override
+    protected void initPropertySources() {
+        super.initPropertySources();
+    }
 
+    @Override
+    protected void registerBeanPostProcessors(ConfigurableListableBeanFactory beanFactory) {
+        super.registerBeanPostProcessors(beanFactory);
+        // TODO 自定义属性编辑器注册 -- 方式三
+//        beanFactory.registerCustomEditor(Address.class, AddressPropertyEditor.class);
+    }
 }

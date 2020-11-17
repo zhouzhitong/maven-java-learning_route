@@ -3,6 +3,7 @@ package com.zzt.spring;
 import com.zzt.spring.bean.TestBean;
 import com.zzt.spring.context.MyClassPathXmlApplicationContext;
 import com.zzt.spring.myTag.User;
+import com.zzt.spring.selfEditor.Customer;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -21,6 +22,13 @@ public class SpringCodeExtendMain {
         ApplicationContext applicationContext = new MyClassPathXmlApplicationContext("application.xml");
 //        User testBean = (User) applicationContext.getBean("1108");
 //        System.out.println(testBean);
+    }
+
+    @Test
+    public void selfEditorTest(){
+        ApplicationContext applicationContext = new MyClassPathXmlApplicationContext("/selfEditor.xml");
+        Customer customer = applicationContext.getBean("customer", Customer.class);
+        System.out.println(customer);
     }
 
     @Test
