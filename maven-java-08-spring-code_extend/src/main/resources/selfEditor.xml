@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="customer" class="com.zzt.spring.selfEditor.Customer">
+        <property name="name" value="张三"/>
+        <property name="address" value="江西省_九江市_南昌市"/>
+    </bean>
+    <bean id="addressPropertyEditorRegistrar" class="com.zzt.spring.selfEditor.AddressPropertyEditorRegistrar"/>
+
+    <!-- 第一种注入方式 -->
+    <!--<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+        <property name="propertyEditorRegistrars">
+            <list value-type="org.springframework.beans.PropertyEditorRegistrar">
+                &lt;!&ndash;                <ref bean="addressPropertyEditorRegistrar"/>&ndash;&gt;
+                <bean class="com.zzt.spring.selfEditor.AddressPropertyEditorRegistrar"/>
+            </list>
+        </property>
+    </bean>-->
+
+    <!-- 第二种注入方式 -->
+    <!--<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+        <property name="customEditors">
+            <map>
+                <entry key="com.zzt.spring.selfEditor.Address"
+                       value="com.zzt.spring.selfEditor.AddressPropertyEditor"/>
+            </map>
+        </property>
+    </bean>-->
+
+</beans>

@@ -1,35 +1,40 @@
 package com.zzt.algorithm.sort.heap;
 
-import java.util.Arrays;
+import org.junit.jupiter.api.Test;
 
 /**
- * 描述：<br>
+ * 描述：<br>堆结构
  * </>
  *
  * @author 周志通
  * @version 1.0.0
- * @date 2020/9/22 9:51
- **/
-public class HeapSortDemo {
+ * @date 2020/11/16 16:53
+ */
+public class HeapDemo01 {
 
-    public static void main(String[] args) {
-        int[] arr = {9, 7, 8, 6, 3, 3, 6, 8, 9, 12, 17, 1, 2, 5};
-        HeapSort heapSort = new HeapSort(arr.length);
-        for (int i : arr) {
-            heapSort.push(i);
+    @Test
+    public void test01() {
+        HeapSort heapSort = new HeapSort(10);
+        heapSort.push(1);
+        heapSort.push(3);
+        heapSort.push(5);
+        heapSort.push(7);
+        heapSort.push(2);
+//        heapSort.print();
+        int t;
+        while ((t = heapSort.pop()) != -1) {
+            System.out.println(t);
         }
-        for (int i = 0; i < arr.length; i++) {
-            System.out.println(heapSort.pop());
-        }
-        int[] heap = heapSort.heap;
-        System.out.println(Arrays.toString(heap));
+
     }
 
+
+    // 小根堆
     private static class HeapSort {
 
-        private int[] heap;
-        private int limit;
-        private int heapSize;
+        private int[] heap; // 堆的存储结构
+        private int limit;  // 堆 最大容量
+        private int heapSize;   // 当前堆中元素的个数
 
         public HeapSort(int maxContain) {
             this.limit = maxContain;
@@ -37,16 +42,18 @@ public class HeapSortDemo {
             this.heapSize = 0;
         }
 
+        // 入栈
         public void push(int value) {
-            if (this.limit == heapSize) {
-                throw new RuntimeException("堆内存已满");
+            if (this.heapSize == this.limit) {
+                System.out.println("当前堆已满！！！");
             }
             heap[heapSize] = value;
             heapInsert(heapSize++);
         }
 
+        // 出栈
         public int pop() {
-            int maxValue = 0;
+            int maxValue = -1;
             if (heapSize >= 0) {
                 maxValue = heap[0];
             }
@@ -78,7 +85,7 @@ public class HeapSortDemo {
 
         private void heapInsert(Integer index) {
             int temp;
-            while (heap[index] > heap[temp = (index - 1) / 2]) {
+            while (index > 0 && heap[index] < heap[temp = (index - 1) >> 1]) {
                 swap(index, index = temp);
             }
         }
