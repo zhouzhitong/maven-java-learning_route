@@ -31,9 +31,21 @@ public class Solution_659 {
             }
         }
 
-        int i;
-        while ((i = stack.pop()) != 0) {
-            Integer num = map.get(i);
+        int num = stack.pop();        // 当前指针指向的数值
+        int preCount = map.get(num);  // 前一个数值的数量
+        int len = 0;                // 已经读取的长度
+        Stack<Integer> help = new Stack<>();
+        int curCount;               // 当前指针的数值的数量
+        int curNum;
+        while ((curNum = stack.pop()) != 0) {
+            curCount = map.get(curNum);
+
+            if (curCount < preCount) {
+                return false;
+            } else {
+                len++;
+            }
+
 
         }
 
