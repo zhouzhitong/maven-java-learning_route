@@ -1,5 +1,7 @@
 package com.zzt.spring.bean;
 
+import org.springframework.stereotype.Component;
+
 /**
  * 描述：<br>
  * </>
@@ -8,6 +10,7 @@ package com.zzt.spring.bean;
  * @version 1.0.0
  * @date 2020/12/5 15:38
  */
+@Component(value = "user")
 public class User {
 
     private String name;
