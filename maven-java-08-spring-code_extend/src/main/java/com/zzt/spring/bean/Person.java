@@ -1,7 +1,6 @@
 package com.zzt.spring.bean;
 
 
-import org.springframework.beans.factory.BeanClassLoaderAware;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.DependsOn;
@@ -21,8 +20,8 @@ import org.springframework.stereotype.Component;
  @version 1.0.0
  @date 2020/12/6 20:16 **/
 @Component
-@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-@DependsOn(value = {"user"})
+//@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+//@DependsOn(value = {"user"})
 public class Person {
 
     private String name;
