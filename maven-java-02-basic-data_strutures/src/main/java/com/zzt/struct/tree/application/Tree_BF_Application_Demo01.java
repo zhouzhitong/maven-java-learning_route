@@ -6,13 +6,13 @@ import org.junit.jupiter.api.Test;
 import java.util.*;
 
 /**
- 描述：<br>面试题 04.03. 特定深度节点链表
+ 描述：<br>面试题 04.03. 特定深度节点链表《宽度优先遍历》
  https://leetcode-cn.com/problems/list-of-depth-lcci/
  </>
  @author 周志通
  @version 1.0.0
  @date 2020/12/10 6:29 **/
-public class Tree_DFB_Application_Demo01 {
+public class Tree_BF_Application_Demo01 {
 
     @Test
     public void test01() {
