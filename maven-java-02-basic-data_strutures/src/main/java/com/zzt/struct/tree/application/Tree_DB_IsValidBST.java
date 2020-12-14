@@ -6,12 +6,13 @@ import org.junit.jupiter.api.Test;
 import static sun.java2d.cmm.ColorTransform.In;
 
 /**
- 描述：<br>面试题 04.05. 合法二叉搜索树
- https://leetcode-cn.com/problems/legal-binary-search-tree-lcci/
- </>
- @author 周志通
- @version 1.0.0
- @date 2020/12/11 6:49 **/
+ * 描述：<br>面试题 04.05. 合法二叉搜索树
+ * https://leetcode-cn.com/problems/legal-binary-search-tree-lcci/
+ * </>
+ *
+ * @author 周志通
+ * @version 1.0.0
+ **/
 public class Tree_DB_IsValidBST {
 
     @Test
@@ -25,12 +26,24 @@ public class Tree_DB_IsValidBST {
 
     public boolean isValidBST(TreeNode root) {
         return dfs(root).isValidBST;
+        /*if (root == null) return true;
+        TreeNode maxLeft = root.left, minRight = root.right;
+        // 找寻左子树中的最右（数值最大）节点
+        while (maxLeft != null && maxLeft.right != null)
+            maxLeft = maxLeft.right;
+        // 找寻右子树中的最左（数值最小）节点
+        while (minRight != null && minRight.left != null)
+            minRight = minRight.left;
+        // 当前层是否合法
+        boolean ret = (maxLeft == null || maxLeft.val < root.val) && (minRight == null || root.val < minRight.val);
+        // 进入左子树和右子树并判断是否合法
+        return ret && isValidBST(root.left) && isValidBST(root.right);*/
     }
 
     private Info dfs(TreeNode root) {
         if (root == null) {
-            return null;
-//            return new Info(0, Integer.MIN_VALUE, true);
+//            return null;
+            return new Info(0, Integer.MIN_VALUE, true);
         }
         Info leftInfo = dfs(root.left);
         if (!leftInfo.isValidBST) {
@@ -53,7 +66,6 @@ public class Tree_DB_IsValidBST {
     private static class Info {
         int maxVal;
         int minVal;
-
         boolean isValidBST;
 
         public Info(int maxVal, int minVal, boolean isValidBST) {
