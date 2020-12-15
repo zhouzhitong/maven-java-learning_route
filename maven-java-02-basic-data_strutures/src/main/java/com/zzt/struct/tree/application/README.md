@@ -79,4 +79,6 @@
 > 1. [判断是否是平衡二叉树](Tree_DFP_ISBalance.java)
 > 1. [任意两个节点之间的最大距离](Tree_DFP_MaxDistance.java)
 > 1. [指定必须进过头结点的，两个节点之间的最大距离](Tree_DFP_MaxDistance2.java)
+> 1. [二叉搜索子树的最大键值和](Tree_DFP_MaxSumBST.java)
 
+[https://leetcode-cn.com/problems/maximum-sum-bst-in-binary-tree/](https://leetcode-cn.com/problems/maximum-sum-bst-in-binary-tree/)
