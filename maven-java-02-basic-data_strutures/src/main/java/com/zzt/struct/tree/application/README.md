@@ -75,10 +75,12 @@
 ## 2、深度优先遍历[DFP]
 
 > 1. [判断合法二叉搜索树](Tree_DFP_IsValidBST.java)
-> 1. [最大二叉搜索子树](Tree_DFP_IsValidBST.java)
+> 1. [最大二叉搜索子树](Tree_DFP_IsValidBST_II.java)
 > 1. [判断是否是平衡二叉树](Tree_DFP_ISBalance.java)
 > 1. [任意两个节点之间的最大距离](Tree_DFP_MaxDistance.java)
 > 1. [指定必须进过头结点的，两个节点之间的最大距离](Tree_DFP_MaxDistance2.java)
 > 1. [二叉搜索子树的最大键值和](Tree_DFP_MaxSumBST.java)
+> 1. [二叉树中的最大路径和](Tree_DFP_MaxPathSum.java)
+> 1. [二叉树中的两个节点a和b的最低公共祖先]()
 
 [https://leetcode-cn.com/problems/maximum-sum-bst-in-binary-tree/](https://leetcode-cn.com/problems/maximum-sum-bst-in-binary-tree/)
