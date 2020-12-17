@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="logUtil" class="com.zzt.aop.log.LogUtil"/>
+    <bean id="myCalculator" class="com.zzt.aop.service.MyCalculator"/>
+    <bean id="secondCalculator" class="com.zzt.aop.service.SecondCalculator"/>
+
+    <aop:config>
+        <aop:aspect ref="logUtil">
+            <aop:pointcut id="method" expression="execution(* com.zzt.aop.service.*.*(..))"/>
+            <aop:around method="around" pointcut-ref="method"/>
+            <aop:before method="start" pointcut-ref="method"/>
+            <aop:after method="stop" pointcut-ref="method"/>
+        </aop:aspect>
+    </aop:config>
+
+</beans>
