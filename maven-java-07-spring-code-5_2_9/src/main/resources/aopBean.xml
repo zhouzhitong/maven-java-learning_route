@@ -10,13 +10,15 @@
     <bean id="logUtil" class="com.zzt.aop.log.LogUtil"/>
     <bean id="myCalculator" class="com.zzt.aop.service.MyCalculator"/>
     <bean id="secondCalculator" class="com.zzt.aop.service.SecondCalculator"/>
-
+    <aop:aspectj-autoproxy/>
     <aop:config>
         <aop:aspect ref="logUtil">
-            <aop:pointcut id="method" expression="execution(* com.zzt.aop.service.*.*(..))"/>
+            <aop:pointcut id="method" expression="execution( Integer com.zzt.aop.service.*.*(..))"/>
             <aop:around method="around" pointcut-ref="method"/>
             <aop:before method="start" pointcut-ref="method"/>
-            <aop:after method="stop" pointcut-ref="method"/>
+            <aop:after method="logFinally" pointcut-ref="method"/>
+            <aop:after-returning method="stop" pointcut-ref="method" returning="result"/>
+            <aop:after-throwing method="logException" pointcut-ref="method" throwing="e"/>
         </aop:aspect>
     </aop:config>
 
