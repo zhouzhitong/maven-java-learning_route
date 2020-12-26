@@ -1,16 +1,16 @@
-package com.zzt;
+package com.zzt.mysql.tran;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 
 /**
  * 描述：<br>
  * </>
  *
- * @author 周志通
- * @version 1.0.0
+ * @author zzt
  */
-public class Main {
+public class TranSqlTest02 {
 
     private static String url = "jdbc:mysql://47.94.175.132:3306/tran";
     private static String username = "root";
@@ -22,7 +22,10 @@ public class Main {
         try {
             Class.forName(classDriver);
             connection = DriverManager.getConnection(url, username, password);
-            System.out.println(connection);
+            connection.setAutoCommit(false);
+            String sql = "delete from psn where id = 2";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            connection.commit();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
