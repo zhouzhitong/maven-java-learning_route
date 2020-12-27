@@ -2,12 +2,18 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/aop
        http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <bean id="logUtil" class="com.zzt.aop.log.LogUtil"/>
+    <context:component-scan base-package="com.zzt.aop"/>
+    <aop:aspectj-autoproxy/>
+
+    <!--<bean id="logUtil" class="com.zzt.aop.log.LogUtil"/>
     <bean id="myCalculator" class="com.zzt.aop.service.MyCalculator"/>
     <bean id="secondCalculator" class="com.zzt.aop.service.SecondCalculator"/>
     <aop:aspectj-autoproxy/>
@@ -20,6 +26,6 @@
             <aop:after-returning method="stop" pointcut-ref="method" returning="result"/>
             <aop:after-throwing method="logException" pointcut-ref="method" throwing="e"/>
         </aop:aspect>
-    </aop:config>
+    </aop:config>-->
 
 </beans>

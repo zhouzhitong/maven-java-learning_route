@@ -1,5 +1,8 @@
 package com.zzt.aop.service;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class SecondCalculator implements Calculator {
 
     public Integer add(Integer i, Integer j) throws NoSuchMethodException {

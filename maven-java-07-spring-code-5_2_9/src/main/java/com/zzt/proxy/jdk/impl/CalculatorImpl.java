@@ -1,6 +1,6 @@
-package com.zzt.proxy.impl;
+package com.zzt.proxy.jdk.impl;
 
-import com.zzt.proxy.Calculator;
+import com.zzt.proxy.jdk.Calculator;
 
 /**
  * 描述：<br>

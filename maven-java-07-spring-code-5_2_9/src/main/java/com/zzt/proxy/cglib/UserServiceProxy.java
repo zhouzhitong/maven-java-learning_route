@@ -1,4 +1,4 @@
-package com.zzt.cglib;
+package com.zzt.proxy.cglib;
 
 import org.springframework.cglib.proxy.Enhancer;
 import org.springframework.cglib.proxy.MethodInterceptor;
