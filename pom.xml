@@ -18,7 +18,6 @@
         <module>maven-java-02-basic-data_strutures</module>
         <module>maven-java-02-algorithm-leetcode</module>
         <module>maven-java-08-spring-code_extend</module>
-        <module>maven-java-07-spring_code-5_2_3</module>
     </modules>
 
     <dependencies>
