@@ -29,12 +29,8 @@ public class Heap_Application_Demo01 {
         for (int i = 1; i < arrays.length; i++) {
             int begin = arrays[i][0];
             int end = arrays[i][1];
-            while (!queue.isEmpty()) {
-                if (begin > queue.peek()) {
-                    queue.poll();
-                } else {
-                    break;
-                }
+            while (!queue.isEmpty() && begin >= queue.peek()) {
+                queue.poll();
             }
             count += queue.size();
             queue.offer(end);
