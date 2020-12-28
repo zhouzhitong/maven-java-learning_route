@@ -5,13 +5,11 @@ import org.junit.jupiter.api.Test;
 import java.util.*;
 
 /**
- * 描述：<br>图的拓扑排序：通过节点最大深度进行排序
- * 例如：节点 X 的深度 8，节点 Y 的深度 10
- * 节点 Y 一定在 X 的前面
- * </>
- *
- * @author zzt
- */
+ 描述：<br>图的拓扑排序：通过节点最大深度进行排序
+ 例如：节点 X 的深度 8，节点 Y 的深度 10
+ 节点 Y 一定在 X 的前面
+ </>
+ @author zzt */
 public class Figure_TopSort_Demo03 {
 
     @Test

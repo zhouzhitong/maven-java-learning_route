@@ -17,7 +17,8 @@ public class Figure_Kruskal {
     public static Set<Edge> kruskalMST(Graph<?> graph) {
         Set<Edge> edges = new HashSet<>();
         AndCollection collection = new AndCollection();
-        collection.add((Node<?>) graph.nodeMap.values());
+        Collection<? extends Node<?>> values = graph.nodeMap.values();
+        values.forEach(collection::add);
         /*PriorityQueue<Edge> edgePriorityQueue = new PriorityQueue<>(new MyEdgeComparator());
         graph.edges.forEach(edgePriorityQueue::offer);*/
         List<Edge> edgeList = new ArrayList<>(graph.edges); // 可以使用堆结构排序
@@ -58,7 +59,7 @@ public class Figure_Kruskal {
             }
         }
 
-        public void add(List<Node<?>> nodes) {
+        public void addAll(List<Node<?>> nodes) {
             parentMap.clear();
             sizeMap.clear();
             for (Node<?> node : nodes) {

@@ -6,12 +6,10 @@ import com.zzt.struct.figure.struct.Node;
 import java.util.*;
 
 /**
- * 描述：<br> 图的 拓扑结构 排序
- * 入度为零先入图
- * </>
- *
- * @author zzt
- */
+ 描述：<br> 图的 拓扑结构 排序
+ 入度为零先入图
+ </>
+ @author zzt */
 public class Figure_TopSort_Demo01 {
 
     public static List<Node<?>> topSort(Graph<?> graph) {

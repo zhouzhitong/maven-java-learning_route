@@ -10,12 +10,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
- * 描述：<br>997. 找到小镇的法官
- * https://leetcode-cn.com/problems/find-the-town-judge/
- * </>
- *
- * @author zzt
- */
+ 描述：<br>997. 找到小镇的法官
+ https://leetcode-cn.com/problems/find-the-town-judge/
+ </>
+ @author zzt */
 public class Solution_997 {
 
     @Test

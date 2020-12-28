@@ -7,11 +7,9 @@ import com.zzt.struct.figure.struct.Node;
 import java.util.*;
 
 /**
- * 描述：<br>图：最小生成树 Prim 算法
- * </>
- *
- * @author zzt
- */
+ 描述：<br>图：最小生成树 Prim 算法
+ </>
+ @author zzt */
 public class Figure_Prim {
 
     public static Set<Edge> kruskalMST(Graph<?> graph) {
