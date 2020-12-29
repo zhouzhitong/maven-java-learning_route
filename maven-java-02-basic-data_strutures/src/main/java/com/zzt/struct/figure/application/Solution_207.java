@@ -25,8 +25,11 @@ public class Solution_207 {
 
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         Map<Integer, Node> nodeMap = new HashMap<>();
+        for (int i = 0; i < numCourses; i++) {
+            nodeMap.put(i,new Node(i));
+        }
         for (int[] prerequisite : prerequisites) {
-            Node node = nodeMap.getOrDefault(prerequisite[0], new Node(prerequisite[0]));
+            Node node = nodeMap.get(prerequisite[0]);
             node.nexts.add(prerequisite[1]);
             nodeMap.put(prerequisite[0], node);
         }
@@ -44,7 +47,7 @@ public class Solution_207 {
                 if (check.contains(next)) {
                     return false;
                 }
-                if (!exitsNode.contains(node)) {
+                if (!exitsNode.contains(next)) {
                     //
                     stack.push(cur);
                     stack.push(node);
