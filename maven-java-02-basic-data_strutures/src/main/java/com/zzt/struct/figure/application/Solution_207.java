@@ -1,5 +1,6 @@
 package com.zzt.struct.figure.application;
 
+import netscape.security.UserTarget;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -21,66 +22,49 @@ public class Solution_207 {
         System.out.println(b);
     }
 
-    Map<Integer, Integer> parent;
-    Map<Integer, Integer> sizeMap;
-    Set<Integer> exitsNode;
 
     public boolean canFinish(int numCourses, int[][] prerequisites) {
-        parent = new HashMap<>();
-        sizeMap = new HashMap<>();
-        exitsNode = new HashSet<>();
-        for (int i = 0; i < numCourses; i++) {
-            add(i);
-        }
+        Map<Integer, Node> nodeMap = new HashMap<>();
         for (int[] prerequisite : prerequisites) {
-            int from = prerequisite[0];
-            int to = prerequisite[1];
-            if (!isSame(from, to)) {
-                union(from, to);
-            } else {
-                return false;
+            Node node = nodeMap.getOrDefault(prerequisite[0], new Node(prerequisite[0]));
+            node.nexts.add(prerequisite[1]);
+            nodeMap.put(prerequisite[0], node);
+        }
+        Node node = nodeMap.get(0);
+        Stack<Node> stack = new Stack<>();
+        Set<Integer> exitsNode = new HashSet<>();
+        stack.push(node);
+        exitsNode.add(0);
+        Set<Integer> check = new HashSet<>();
+        check.add(0);
+        while (!stack.isEmpty()) {
+            Node cur = stack.pop();
+            for (Integer next : cur.nexts) {
+                node = nodeMap.get(next);
+                if (check.contains(next)) {
+                    return false;
+                }
+                if (!exitsNode.contains(node)) {
+                    //
+                    stack.push(cur);
+                    stack.push(node);
+                    exitsNode.add(next);
+                    break;
+                }
+
             }
         }
+
         return true;
     }
 
-    public Integer findFather(Integer c) {
-        Stack<Integer> cs = new Stack<>();
-        Integer f;
-        while (!(f = parent.get(c)).equals(c)) {
-            c = f;
-            cs.add(c);
-        }
-        while (!cs.isEmpty()) {
-            parent.put(cs.pop(), f);
-        }
-        return f;
-    }
+    private static class Node {
+        int val;
+        List<Integer> nexts;
 
-    public void add(Integer a) {
-        if (exitsNode.add(a)) {
-            parent.put(a, a);
-            sizeMap.put(a, 1);
-        }
-    }
-
-    public boolean isSame(Integer a, Integer b) {
-        return findFather(a).equals(findFather(b));
-    }
-
-    public void union(Integer a, Integer b) {
-        Integer aFather = findFather(a);
-        Integer bFather = findFather(b);
-        if (!aFather.equals(bFather)) {
-            int aSize = sizeMap.remove(aFather);
-            int bSize = sizeMap.remove(bFather);
-            if (aSize > bSize) {
-                parent.put(bFather, aFather);
-                sizeMap.put(aFather, aSize + bSize);
-            } else {
-                parent.put(aFather, bFather);
-                sizeMap.put(bFather, aSize + bSize);
-            }
+        public Node(int val) {
+            this.val = val;
+            nexts = new ArrayList<>();
         }
     }
 
