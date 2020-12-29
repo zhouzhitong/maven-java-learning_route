@@ -1,8 +1,10 @@
 package com.zzt.struct.figure.application;
 
+import com.zzt.struct.figure.demo.GraphGenerator;
 import com.zzt.struct.figure.struct.Edge;
 import com.zzt.struct.figure.struct.Graph;
 import com.zzt.struct.figure.struct.Node;
+import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
@@ -13,6 +15,14 @@ import java.util.*;
  * @author zzt
  */
 public class Figure_Kruskal {
+
+    @Test
+    public void test01() {
+        Integer[][] matrix = {{1, 4, 2}, {1, 3, 2}, {1, 2, 1}, {1, 2, 0}, {1, 0, 3}};
+        Graph<Integer> graph = GraphGenerator.createGraph(matrix);
+        Set<Edge> edges = kruskalMST(graph);
+        System.out.println(edges);
+    }
 
     public static Set<Edge> kruskalMST(Graph<?> graph) {
         Set<Edge> edges = new HashSet<>();

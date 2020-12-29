@@ -19,13 +19,13 @@ public class GraphGenerator {
         Graph<Integer> graph = new Graph<>();
         for (int i = 0; i < matrix.length; i++) {
             int weight = matrix[i][0];
-            int fromData = matrix[i][0];
-            int toData = matrix[i][0];
+            Integer fromData = matrix[i][1];
+            Integer toData = matrix[i][2];
 
-            if (graph.nodeMap.containsKey(fromData)) {
+            if (!graph.nodeMap.containsKey(fromData)) {
                 graph.nodeMap.put(fromData, new Node<>(fromData));
             }
-            if (graph.nodeMap.containsKey(toData)) {
+            if (!graph.nodeMap.containsKey(toData)) {
                 graph.nodeMap.put(toData, new Node<>(toData));
             }
             Node<Integer> fromNode = graph.nodeMap.get(fromData);
