@@ -31,12 +31,19 @@ public class Solution_721 {
             if (account.size() < 2) continue;
             String name = account.get(0);
             String email = account.get(1);
-
-            for (int i = 1; i < account.size(); i++) {
-                add(email);
-
+            map.put(email, name);
+            add(email);
+            for (int i = 2; i < account.size(); i++) {
+                String b = account.get(i);
+                add(b);
+                union(email, b);
             }
         }
+
+        for (String email : set) {
+
+        }
+
 
         return null;
     }
