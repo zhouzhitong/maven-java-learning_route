@@ -34,16 +34,16 @@ public class Figure_Dijkstra {
                 }
             }
             selectedNodes.add(minNode);
-            minNode = getMin(distanceMap, selectedNodes);
+            minNode = getMinDistanceAndUnselectedNode(distanceMap, selectedNodes);
         }
         return distanceMap;
     }
 
-    private static Node<?> getMin(Map<Node<?>, Integer> nodesMap,
-                                  Set<Node<?>> selectedNodes) {
+    private static Node<?> getMinDistanceAndUnselectedNode(Map<Node<?>, Integer> distanceMap,
+                                                           Set<Node<?>> selectedNodes) {
         Node<?> minNode = null;
         int minWeight = Integer.MAX_VALUE;
-        for (Map.Entry<Node<?>, Integer> entry : nodesMap.entrySet()) {
+        for (Map.Entry<Node<?>, Integer> entry : distanceMap.entrySet()) {
             Node<?> key = entry.getKey();
             Integer value = entry.getValue();
             if (!selectedNodes.contains(key) && minWeight > value) {
