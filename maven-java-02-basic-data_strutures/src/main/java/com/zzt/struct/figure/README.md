@@ -115,5 +115,8 @@ public class Graph<T> {
 [最小生成树 Kruskal 算法](application/Figure_Kruskal.java)
 [最小生成树 Prim 算法](application/Figure_Prim.java)
 
+##### 2.4 图的节点到任意节点的距离
 
+[图的节点到任意节点的距离 Dijkstra 算法](application/Figure_Dijkstra.java)
+[图的节点到任意节点的距离 Dijkstra 算法（优化）](application/Figure_Dijkstra_Demo02.java)
 
