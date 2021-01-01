@@ -26,10 +26,21 @@
             <version>1.6</version>
         </dependency>
 
+        <!-- 数据库连接池依赖： -->
+        <!-- c3p0: 0.9.5.2 -->
         <dependency>
             <groupId>com.mchange</groupId>
             <artifactId>c3p0</artifactId>
             <version>0.9.5.2</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
+        <!-- https://github.com/alibaba/druid/wiki/常见问题 -->
+        <!-- druid: 1.2.4 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.2.4</version>
         </dependency>
     </dependencies>
 
