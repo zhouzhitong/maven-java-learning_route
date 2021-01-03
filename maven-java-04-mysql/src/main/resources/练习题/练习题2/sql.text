@@ -1,45 +1,45 @@
-# 1¡¢²éÑ¯"01"¿Î³Ì±È"02"¿Î³Ì³É¼¨¸ßµÄÑ§ÉúµÄĞÅÏ¢¼°¿Î³Ì·ÖÊı
+# 1ã€æŸ¥è¯¢"01"è¯¾ç¨‹æ¯”"02"è¯¾ç¨‹æˆç»©é«˜çš„å­¦ç”Ÿçš„ä¿¡æ¯åŠè¯¾ç¨‹åˆ†æ•°
 select a.*, b.s_score as 01_score, c.s_score as 02_score
 from student a
          join score b on a.s_id = b.s_id and b.c_id = '01'
          left join score c on a.s_id = c.s_id and c.c_id = '02' or c.c_id is null
 where b.s_score > c.s_score;
-# 2¡¢²éÑ¯"01"¿Î³Ì±È"02"¿Î³Ì³É¼¨µÍµÄÑ§ÉúµÄĞÅÏ¢¼°¿Î³Ì·ÖÊı
+# 2ã€æŸ¥è¯¢"01"è¯¾ç¨‹æ¯”"02"è¯¾ç¨‹æˆç»©ä½çš„å­¦ç”Ÿçš„ä¿¡æ¯åŠè¯¾ç¨‹åˆ†æ•°
 select a.*, b.s_score as 01_score, c.s_score as 02_score
 from student a
          join score b on a.s_id = b.s_id and b.c_id = '01' or b.c_id IS NULL
          left join score c on a.s_id = c.s_id and c.c_id = '02'
 where b.s_score < c.s_score;
-# 3¡¢²éÑ¯Æ½¾ù³É¼¨´óÓÚµÈÓÚ60·ÖµÄÍ¬Ñ§µÄÑ§Éú±àºÅºÍÑ§ÉúĞÕÃûºÍÆ½¾ù³É¼¨
+# 3ã€æŸ¥è¯¢å¹³å‡æˆç»©å¤§äºç­‰äº60åˆ†çš„åŒå­¦çš„å­¦ç”Ÿç¼–å·å’Œå­¦ç”Ÿå§“åå’Œå¹³å‡æˆç»©
 select a.s_id, a.s_name, round(avg(s.s_score), 2) as avg_score
 from student a
          join score s on s.s_id = a.s_id
 group by a.s_id, a.s_name
 having round(avg(s.s_score), 1) >= 60;
--- 4¡¢²éÑ¯Æ½¾ù³É¼¨Ğ¡ÓÚ60·ÖµÄÍ¬Ñ§µÄÑ§Éú±àºÅºÍÑ§ÉúĞÕÃûºÍÆ½¾ù³É¼¨
--- (°üÀ¨ÓĞ³É¼¨µÄºÍÎŞ³É¼¨µÄ)
-select stu.s_id, stu.s_name, round(avg(s.s_score), 2) as 'Æ½¾ù³É¼¨'
+-- 4ã€æŸ¥è¯¢å¹³å‡æˆç»©å°äº60åˆ†çš„åŒå­¦çš„å­¦ç”Ÿç¼–å·å’Œå­¦ç”Ÿå§“åå’Œå¹³å‡æˆç»©
+-- (åŒ…æ‹¬æœ‰æˆç»©çš„å’Œæ— æˆç»©çš„)
+select stu.s_id, stu.s_name, round(avg(s.s_score), 2) as 'å¹³å‡æˆç»©'
 from student stu
          left join score s on stu.s_id = s.s_id
 group by stu.s_id, stu.s_name
 having round(avg(s.s_score), 2) < 60
 union
-select stu.s_id, stu.s_name, 0 as 'Æ½¾ù³É¼¨'
+select stu.s_id, stu.s_name, 0 as 'å¹³å‡æˆç»©'
 from student stu
 where stu.s_id not in (
     select distinct s_id
     from score
 );
--- 5¡¢²éÑ¯ËùÓĞÍ¬Ñ§µÄÑ§Éú±àºÅ¡¢Ñ§ÉúĞÕÃû¡¢Ñ¡¿Î×ÜÊı¡¢ËùÓĞ¿Î³ÌµÄ×Ü³É¼¨
-select stu.s_id, stu.s_name, count(s.s_id) as 'Ñ¡¿Î×ÜÊı', sum(s.s_score) as 'ËùÓĞ¿Î³ÌµÄ×Ü³É¼¨'
+-- 5ã€æŸ¥è¯¢æ‰€æœ‰åŒå­¦çš„å­¦ç”Ÿç¼–å·ã€å­¦ç”Ÿå§“åã€é€‰è¯¾æ€»æ•°ã€æ‰€æœ‰è¯¾ç¨‹çš„æ€»æˆç»©
+select stu.s_id, stu.s_name, count(s.s_id) as 'é€‰è¯¾æ€»æ•°', sum(s.s_score) as 'æ‰€æœ‰è¯¾ç¨‹çš„æ€»æˆç»©'
 from student stu
          left join score s on stu.s_id = s.s_id
 group by stu.s_id, stu.s_name;
--- 6¡¢²éÑ¯"Àî"ĞÕÀÏÊ¦µÄÊıÁ¿
-select count(t_id) as "ÀîÀÏÊ¦µÄÊıÁ¿"
+-- 6ã€æŸ¥è¯¢"æ"å§“è€å¸ˆçš„æ•°é‡
+select count(t_id) as "æè€å¸ˆçš„æ•°é‡"
 from teacher
-where t_name like 'Àî%';
--- 7¡¢²éÑ¯Ñ§¹ı"ÕÅÈı"ÀÏÊ¦ÊÚ¿ÎµÄÍ¬Ñ§µÄĞÅÏ¢
+where t_name like 'æ%';
+-- 7ã€æŸ¥è¯¢å­¦è¿‡"å¼ ä¸‰"è€å¸ˆæˆè¯¾çš„åŒå­¦çš„ä¿¡æ¯
 select stu.s_id, s_name, s_birth, s_sex
 from student stu
          left join score s on stu.s_id = s.s_id
@@ -48,8 +48,8 @@ where c_id in (
     from course
     where t_id in (select t_id
                    from teacher
-                   where t_name = 'ÕÅÈı'));
--- 8¡¢²éÑ¯Ã»Ñ§¹ı"ÕÅÈı"ÀÏÊ¦ÊÚ¿ÎµÄÍ¬Ñ§µÄĞÅÏ¢
+                   where t_name = 'å¼ ä¸‰'));
+-- 8ã€æŸ¥è¯¢æ²¡å­¦è¿‡"å¼ ä¸‰"è€å¸ˆæˆè¯¾çš„åŒå­¦çš„ä¿¡æ¯
 select stu.s_id, s_name, s_birth, s_sex
 from student stu
 where stu.s_id not in (
@@ -61,8 +61,75 @@ where stu.s_id not in (
         where t_id in (
             select t_id
             from teacher
-            where t_name = 'ÕÅÈı'
+            where t_name = 'å¼ ä¸‰'
         )
     )
 );
+
+
+-- 13ã€æŸ¥è¯¢å’Œ"01"å·çš„åŒå­¦å­¦ä¹ çš„è¯¾ç¨‹å®Œå…¨ç›¸åŒçš„å…¶ä»–åŒå­¦çš„ä¿¡æ¯
+select s_id, s_name, s_birth, s_sex
+from student
+where s_id in (
+    select s_id
+    from score
+    where score.s_id != '01'
+      and c_id in (
+        select distinct c_id
+        from score
+        where s_id = '01'
+    )
+    group by s_id
+    having count(1) = (
+        select count(1)
+        from score
+        group by s_id
+        having s_id = '01'
+    )
+);
+-- 14ã€æŸ¥è¯¢æ²¡å­¦è¿‡"å¼ ä¸‰"è€å¸ˆè®²æˆçš„ä»»ä¸€é—¨è¯¾ç¨‹çš„å­¦ç”Ÿå§“å
+select stu.s_name
+from student stu
+where s_id not in (
+    select distinct s_id
+    from score
+    where c_id in (
+        select c_id
+        from course
+        where t_id in (
+            select t_id
+            from teacher t
+            where t_name = 'å¼ ä¸‰'
+        )
+    )
+);
+-- 15ã€æŸ¥è¯¢ä¸¤é—¨åŠå…¶ä»¥ä¸Šä¸åŠæ ¼è¯¾ç¨‹çš„åŒå­¦çš„å­¦å·ï¼Œå§“ååŠå…¶å¹³å‡æˆç»©
+select stu.s_id, stu.s_name, round(avg(s.s_score), 2)
+from student stu
+         left join score s on stu.s_id = s.s_id
+where s.s_id in (
+    select s_id
+    from score
+    where s_score < 60
+    group by s_id
+    having count(s_id) > 2
+)
+group by stu.s_id, stu.s_name;
+-- 16ã€æ£€ç´¢"01"è¯¾ç¨‹åˆ†æ•°å°äº60ï¼ŒæŒ‰åˆ†æ•°é™åºæ’åˆ—çš„å­¦ç”Ÿä¿¡æ¯
+select stu.s_id, s_name, s_birth, s_sex, s.s_score
+from student stu,
+     score s
+where stu.s_id = s.s_id
+  and c_id = '01'
+  and s.s_score < 60
+order by s.s_score desc;
+-- 17ã€æŒ‰å¹³å‡æˆç»©ä»é«˜åˆ°ä½æ˜¾ç¤ºæ‰€æœ‰å­¦ç”Ÿçš„æ‰€æœ‰è¯¾ç¨‹çš„æˆç»©ä»¥åŠå¹³å‡æˆç»©
+select a.s_id,
+       (select s_score from score where s_id = a.s_id and c_id = '01') as è¯­æ–‡,
+       (select s_score from score where s_id = a.s_id and c_id = '02') as æ•°å­¦,
+       (select s_score from score where s_id = a.s_id and c_id = '03') as è‹±è¯­,
+       round(avg(s_score), 2)                                          as å¹³å‡åˆ†
+from score a
+GROUP BY a.s_id
+ORDER BY å¹³å‡åˆ† DESC;
 
