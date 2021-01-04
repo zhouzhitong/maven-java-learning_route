@@ -7,6 +7,7 @@ import java.util.Map;
 
 /**
  描述：<br>求 斐波那契数列 的 第 n 项
+ https://leetcode-cn.com/problems/fibonacci-number/
  </>
  @author 周志通
  @version 1.0.0
@@ -29,6 +30,7 @@ public class Recursion_Dynamic_Fibonacci {
     // 动态规划版本
     public int getFibonacci(int num) {
         Map<Integer, Integer> map = new HashMap<>();
+        map.put(0, 0);
         map.put(1, 1);
         map.put(2, 1);
         return process(num, map);
@@ -38,11 +40,7 @@ public class Recursion_Dynamic_Fibonacci {
         if (map.containsKey(n)) {
             return map.get(n);
         }
-        int n_1 = process(n - 1, map);
-        int n_2 = process(n - 2, map);
-        int fN = n_1 + n_2;
-        map.put(n - 1, n_1);
-        map.put(n - 2, n_2);
+        int fN = process(n - 1, map) + process(n - 2, map);
         map.put(n, fN);
         return fN;
     }
