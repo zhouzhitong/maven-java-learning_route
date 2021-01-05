@@ -10,17 +10,42 @@ select sid,
 from student
 where sid in (
     select score.student_id
-    from score inner join course on score.course_id = course.cid
-    where course.cname in ('生物','物理')
+    from score
+             inner join course on score.course_id = course.cid
+    where course.cname in ('生物', '物理')
       and score.score >= 60
     group by score.student_id
     having count(course_id) = 2
 );
 
 # 4、查询每个年级的班级数，取出班级数最多的前三个年级；
+select g.gname
+from class_grade g
+         left join class c on g.gid = c.grade_id
+group by g.gid
+order by count(grade_id) desc
+limit 0,3;
+
 # 5、查询平均成绩最高和最低的学生的id和姓名以及平均成绩；
+select stu.sid, stu.sname, round(avg(s.score), 2)
+from student stu
+         right join score s on stu.sid = s.student_id
+group by stu.sid, stu.sname
+order by round(avg(s.score), 2);
+
 # 6、查询每个年级的学生人数；
+select g.gname, count(c.grade_id)
+from class_grade g
+         left join class c on g.gid = c.grade_id
+group by g.gid
+order by count(c.grade_id);
+
 # 7、查询每位学生的学号，姓名，选课数，平均成绩；
+select stu.sid, stu.sid, count(s.sid) as "count", round(avg(s.score), 2) as "avg"
+from student stu
+         right join score s on stu.sid = s.student_id
+group by stu.sid;
+
 # 8、查询学生编号为“2”的学生的姓名、该学生成绩最高的课程名、成绩最低的课程名及分数；
 # 9、查询姓“李”的老师的个数和所带班级数；
 # 10、查询班级数小于5的年级id和年级名；
