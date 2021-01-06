@@ -1,13 +1,27 @@
--- 1、查询"01"课程比"02"课程成绩高的学生的信息及课程分数  
+# 1、查询"01"课程比"02"课程成绩高的学生的信息及课程分数
+## 方法一：
+select stu.s_id, s_name, s_birth, s_sex
+from student stu
+         right join score s1 on stu.s_id = s1.s_id and s1.c_id = '01'
+         right join score s2 on stu.s_id = s2.s_id and s2.c_id = '02'
+where s1.s_score > s2.s_score;
+## 方法二：
 select a.*, b.s_score as 01_score, c.s_score as 02_score
 from student a
          join score b on a.s_id = b.s_id and b.c_id = '01'
-         left join score c on a.s_id = c.s_id and c.c_id = '02' or c.c_id = NULL
+         left join score c on a.s_id = c.s_id and c.c_id = '02' or c.c_id IS NULL
 where b.s_score > c.s_score;
--- 2、查询"01"课程比"02"课程成绩低的学生的信息及课程分数
+# 2、查询"01"课程比"02"课程成绩低的学生的信息及课程分数
+## 方法一：
+select stu.s_id, s_name, s_birth, s_sex, s.s_score, b.s_score
+from student stu
+         left join score s on stu.s_id = s.s_id and s.c_id = '01'
+         right join score b on stu.s_id = b.s_id and b.c_id = '02'
+where s.s_score < b.s_score;
+## 方法二：
 select a.*, b.s_score as 01_score, c.s_score as 02_score
 from student a
-         left join score b on a.s_id = b.s_id and b.c_id = '01' or b.c_id = NULL
+         left join score b on a.s_id = b.s_id and b.c_id = '01' or b.c_id IS NULL
          join score c on a.s_id = c.s_id and c.c_id = '02'
 where b.s_score < c.s_score;
 -- 3、查询平均成绩大于等于60分的同学的学生编号和学生姓名和平均成绩
@@ -119,14 +133,31 @@ where a.s_id not in (
                from teacher
                where t_name = '张三'))
     group by s_id);
--- 15、查询两门及其以上不及格课程的同学的学号，姓名及其平均成绩
+# 15、查询两门及其以上不及格课程的同学的学号，姓名及其平均成绩
+## 方法1：
+select stu.s_id, stu.s_name, round(avg(s.s_score), 1)
+from student stu
+         right join score s on stu.s_id = s.s_id
+where s_score < 60
+group by s.s_id
+having count(1) > 1;
+## 方法2：
 select a.s_id, a.s_name, ROUND(AVG(b.s_score))
 from student a
          left join score b on a.s_id = b.s_id
 where a.s_id in (
-    select s_id from score where s_score < 60 GROUP BY s_id having count(1) >= 2)
+    select s_id from score where s_score < 60 GROUP BY s_id having count(1) >= 2
+)
 GROUP BY a.s_id, a.s_name;
--- 16、检索"01"课程分数小于60，按分数降序排列的学生信息
+# 16、检索"01"课程分数小于60，按分数降序排列的学生信息
+## 方法1：
+select stu.s_id, s_name, s_birth, s_sex,s.c_id, s.s_score
+from student stu
+         right join score s on stu.s_id = s.s_id
+where s.s_score < 60
+  and s.c_id = '01'
+order by s.s_score desc;
+## 方法2：
 select a.*, b.c_id, b.s_score
 from student a,
      score b
@@ -428,13 +459,15 @@ ORDER BY total, c_id ASC
 select s_id, count(*) as sel
 from score
 GROUP BY s_id
-HAVING sel >= 2
+HAVING sel >= 2;
+
 -- 45、查询选修了全部课程的学生信息
 select *
 from student
 where s_id in (
-    select s_id from score GROUP BY s_id HAVING count(*) = (select count(*) from course))
-          - -46、查询各学生的年龄
+    select s_id from score GROUP BY s_id HAVING count(*) = (select count(*) from course));
+
+-- 46、查询各学生的年龄
 -- 按照出生日期来算，当前月日 < 出生年月的月日则，年龄减一
 select s_birth,
        (DATE_FORMAT(NOW(), '%Y') - DATE_FORMAT(s_birth, '%Y') -
@@ -443,20 +476,20 @@ from student;
 -- 47、查询本周过生日的学生
 select *
 from student
-where WEEK(DATE_FORMAT(NOW(), '%Y%m%d')) = WEEK(s_birth)
+where WEEK(DATE_FORMAT(NOW(), '%Y%m%d')) = WEEK(s_birth);
 select *
 from student
-where YEARWEEK(s_birth) = YEARWEEK(DATE_FORMAT(NOW(), '%Y%m%d'))
-select WEEK(DATE_FORMAT(NOW(), '%Y%m%d'))
+where YEARWEEK(s_birth) = YEARWEEK(DATE_FORMAT(NOW(), '%Y%m%d'));
+select WEEK(DATE_FORMAT(NOW(), '%Y%m%d'));
 -- 48、查询下周过生日的学生
 select *
 from student
-where WEEK(DATE_FORMAT(NOW(), '%Y%m%d')) + 1 = WEEK(s_birth)
+where WEEK(DATE_FORMAT(NOW(), '%Y%m%d')) + 1 = WEEK(s_birth);
 -- 49、查询本月过生日的学生
 select *
 from student
-where MONTH(DATE_FORMAT(NOW(), '%Y%m%d')) = MONTH(s_birth)
+where MONTH(DATE_FORMAT(NOW(), '%Y%m%d')) = MONTH(s_birth);
 -- 50、查询下月过生日的学生
 select *
 from student
-where MONTH(DATE_FORMAT(NOW(), '%Y%m%d')) + 1 = MONTH(s_birth)
+where MONTH(DATE_FORMAT(NOW(), '%Y%m%d')) + 1 = MONTH(s_birth);
