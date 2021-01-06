@@ -138,7 +138,7 @@ public class DynamicDemo_StickersToSpellWord {
                 }
                 i++;
             }
-            Map<String, Integer> db = new HashMap<>();
+            Map<String, Integer> db = new HashMap<>(stickers.length);
             db.put("", 0);
             int process = process(counts, target, db);
             return process == Integer.MAX_VALUE ? -1 : process;
