@@ -151,7 +151,7 @@ where a.s_id in (
 GROUP BY a.s_id, a.s_name;
 # 16、检索"01"课程分数小于60，按分数降序排列的学生信息
 ## 方法1：
-select stu.s_id, s_name, s_birth, s_sex,s.c_id, s.s_score
+select stu.s_id, s_name, s_birth, s_sex, s.c_id, s.s_score
 from student stu
          right join score s on stu.s_id = s.s_id
 where s.s_score < 60
@@ -166,16 +166,21 @@ where a.s_id = b.s_id
   and b.s_score < 60
 ORDER BY b.s_score DESC;
 -- 17、按平均成绩从高到低显示所有学生的所有课程的成绩以及平均成绩
+
 select stu.s_id,
        stu.s_name,
-       (select s.s_score from score s where stu.s_id = s.s_id and s.c_id = '01') as 语文,
-       (select s.s_score from score s where stu.s_id = s.s_id and s.c_id = '02') as 数学,
-       (select s.s_score from score s where stu.s_id = s.s_id and s.c_id = '03') as 英语,
-       round(avg(s.s_score), 2)                                                  as 平均成绩
+       round(avg(s.s_score)) as "avg_score",
+       (select s_score from score where s_id = stu.s_id and c_id = '01') as chinese
 from student stu
          right join score s on stu.s_id = s.s_id
 group by stu.s_id
-order by round(avg(s.s_score), 2) desc;
+order by avg(s.s_score);
+
+select s.s_id, round(avg(s.s_score), 2) as "平均分"
+from score s
+group by s.s_id
+order by avg(s.s_score) desc;
+
 
 select a.s_id,
        (select s_score from score where s_id = a.s_id and c_id = '01') as 语文,
