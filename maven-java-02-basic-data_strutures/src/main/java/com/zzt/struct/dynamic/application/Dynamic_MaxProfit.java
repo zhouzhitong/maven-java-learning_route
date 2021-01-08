@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
  *
  * @author zzt
  */
-public class Dynamic_MaxProfit_III {
+public class Dynamic_MaxProfit {
 
     @Test
     public void test01() {
