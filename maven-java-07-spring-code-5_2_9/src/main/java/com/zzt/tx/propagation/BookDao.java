@@ -11,7 +11,7 @@ public class BookDao {
     JdbcTemplate jdbcTemplate;
 
     /**
-     * ¼õÈ¥Ä³¸öÓÃ»§µÄÓà¶î
+     * å‡å»æŸä¸ªç”¨æˆ·çš„ä½™é¢
      * @param userName
      * @param price
      */
@@ -21,7 +21,7 @@ public class BookDao {
     }
 
     /**
-     * °´ÕÕÍ¼ÊéµÄidÀ´»ñÈ¡Í¼ÊéµÄ¼Û¸ñ
+     * æŒ‰ç…§å›¾ä¹¦çš„idæ¥è·å–å›¾ä¹¦çš„ä»·æ ¼
      * @param id
      * @return
      */
@@ -31,7 +31,7 @@ public class BookDao {
     }
 
     /**
-     * ¼õ¿â´æ£¬¼õÈ¥Ä³±¾ÊéµÄ¿â´æ
+     * å‡åº“å­˜ï¼Œå‡å»æŸæœ¬ä¹¦çš„åº“å­˜
      * @param id
      */
     public void updateStock(int id){
@@ -40,7 +40,7 @@ public class BookDao {
     }
 
     /**
-     * ĞŞ¸ÄÍ¼Êé¼Û¸ñ
+     * ä¿®æ”¹å›¾ä¹¦ä»·æ ¼
      * @param id
      * @param price
      */
