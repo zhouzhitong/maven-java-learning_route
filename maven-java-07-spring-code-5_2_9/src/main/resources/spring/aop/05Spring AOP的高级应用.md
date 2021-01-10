@@ -610,7 +610,7 @@ public class MyTest {
 ​		Spring的核心事务管理抽象是PlatformTransactionManager。它为事务管理封装了一组独立于技术的方法。无论使用Spring的哪种事务管理策略(编程式或声明式)，事务管理器都是必须的。
 
 ​		事务管理器可以以普通的bean的形式声明在Spring IOC容器中。下图是spring提供的事务管理器
-![事务管理器](image\事务管理器.png)
+![事务管理器](..\image\事务管理器.png)
 
 1、在配置文件中添加事务管理器
 
@@ -746,7 +746,7 @@ public class BookService {
 
 ​		如果你一次执行多条查询语句，例如统计查询，报表查询，在这种场景下，多条查询SQL必须保证整体的读一致性，否则，在前条SQL查询之后，后条SQL查询之前，数据被其他用户改变，则该次整体的统计查询将会出现读数据不一致的状态，此时，应该启用事务支持。
 
-​		对于只读查询，可以指定事务类型为readonly，即只读事务。由于只读事务不存在数据的修改，因此数据库将会为只读事务提供一些优化手段
+​		**对于只读查询，可以指定事务类型为readonly，即只读事务。由于只读事务不存在数据的修改，因此数据库将会为只读事务提供一些优化手段**
 
 BookService.java
 
@@ -771,7 +771,6 @@ public class BookService {
      */
     @Transactional(timeout = 3,readOnly = true)
     public void checkout(String username,int id){
-
         bookDao.updateStock(id);
         int price = bookDao.getPrice(id);
         bookDao.updateBalance(username,price);
@@ -825,6 +824,18 @@ public class BookService {
 ```
 
 ##### 7、设置哪些异常回滚
+
+```java
+/**
+- rollbackFor：哪些异常事务需要回滚
+- rollbackForClassName：填写的参数是全类名
+<p>By default, a transaction will be rolling back on {@link RuntimeException}
+and {@link Error} but not on checked exceptions (business exceptions). See
+{@link org.springframework.transaction.interceptor.DefaultTransactionAttribute#rollbackOn (Throwable)}
+ */
+```
+
+
 
 BookService.java
 
@@ -911,7 +922,7 @@ public class BookService {
 
 spring的事务传播行为一共有7种：
 
-![传播特性](E:\lian\spring\image\传播特性.jpg)
+![传播特性](..\image\传播特性.jpg)
 
 ##### 10、测试事务的传播特性
 
