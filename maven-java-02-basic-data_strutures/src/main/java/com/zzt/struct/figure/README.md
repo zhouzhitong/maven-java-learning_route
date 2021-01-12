@@ -84,7 +84,6 @@ public class Graph<T> {
 ```
 
 
-
 #### 1.1 自定义结构，转换成自定义图结构
 
 [转换成自定义图结构](demo/GraphGenerator.java)
@@ -100,9 +99,9 @@ public class Graph<T> {
 
 #### 2.2 图的深度优先遍历
 栈结构、递归实现
-
 [图的深度优先遍历](demo/Graph_DFS_Demo.java)
 
+[图的回路检测](demo/Graph_IsHasLoop.java)
 
 ##### 2.3 图的拓扑排序
 
@@ -120,3 +119,4 @@ public class Graph<T> {
 [图的节点到任意节点的距离 Dijkstra 算法](application/Figure_Dijkstra.java)
 [图的节点到任意节点的距离 Dijkstra 算法（优化）](application/Figure_Dijkstra_Demo02.java)
 
+#### 3 图结构的应用（主要来源：LeetCode题目）

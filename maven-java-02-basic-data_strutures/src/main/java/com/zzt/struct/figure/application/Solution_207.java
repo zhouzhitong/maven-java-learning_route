@@ -1,6 +1,5 @@
 package com.zzt.struct.figure.application;
 
-import netscape.security.UserTarget;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;

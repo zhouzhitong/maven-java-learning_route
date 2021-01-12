@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * 描述：<br> 图的回路检测
+ * 描述：<br> 图的回路检测(通过深度优先遍历实现)
  * </>
  *
  * @author zzt
@@ -24,24 +24,21 @@ public class Graph_IsHasLoop {
         c.nexts.add(d);
 //         产生回路
         d.nexts.add(b);
-        System.out.println(bfs(a));
-
+        System.out.println(hasGraphLoop(a));
 
     }
 
-    public static boolean bfs(Node<?> node) {
-        return doDfs(node, new HashSet<>(), new HashSet<>());
+    public static boolean hasGraphLoop(Node<?> node) {
+        return doDfs(node, new HashSet<>());
     }
 
-    private static boolean doDfs(Node<?> node, Set<Node<?>> exitNodes, Set<Node<?>> pathExitNodes) {
+    private static boolean doDfs(Node<?> node, Set<Node<?>> exitNodes) {
         if (exitNodes.contains(node)) {
             return exitNodes.contains(node);
         }
         exitNodes.add(node);
-        pathExitNodes.add(node);
-        System.out.println(node.data);
         for (Node<?> next : node.nexts) {
-            boolean b = doDfs(next, exitNodes, pathExitNodes);
+            boolean b = doDfs(next, exitNodes);
             if (b) {
                 return true;
             }
