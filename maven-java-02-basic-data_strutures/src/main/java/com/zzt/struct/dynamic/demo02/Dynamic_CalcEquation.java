@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.*;
 
 /**
- ÃèÊö£º<br>399. ³ı·¨ÇóÖµ
+ æè¿°ï¼š<br>399. é™¤æ³•æ±‚å€¼
  https://leetcode-cn.com/problems/evaluate-division/
  </>
 
@@ -32,13 +32,13 @@ public class Dynamic_CalcEquation {
     private static class CalcEquation {
 
         public double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) {
-            HashMap<String, String> unionMap = new HashMap<>(); //²¢²é¼¯
-            HashMap<String, List<String>> map = new HashMap<>(); //ÁÚ½Ó±í
-            HashMap<String, List<Double>> weight = new HashMap<>(); //ºÍÁÚ½Ó±íÒ»Ò»¶ÔÓ¦µÄÈ¨ÖØ±í
+            HashMap<String, String> unionMap = new HashMap<>(); //å¹¶æŸ¥é›†
+            HashMap<String, List<String>> map = new HashMap<>(); //é‚»æ¥è¡¨
+            HashMap<String, List<Double>> weight = new HashMap<>(); //å’Œé‚»æ¥è¡¨ä¸€ä¸€å¯¹åº”çš„æƒé‡è¡¨
             for (int i = 0; i < equations.size(); i++) {
                 String s1 = equations.get(i).get(0);
                 String s2 = equations.get(i).get(1);
-                //½¨Á¢ÁÚ½Ó±íºÍÏàÓ¦È¨ÖØ
+                //å»ºç«‹é‚»æ¥è¡¨å’Œç›¸åº”æƒé‡
                 if (!map.containsKey(s1)) {
                     map.put(s1, new ArrayList<>());
                     weight.put(s1, new ArrayList<>());
@@ -51,21 +51,21 @@ public class Dynamic_CalcEquation {
                 weight.get(s1).add(values[i]);
                 map.get(s2).add(s1);
                 weight.get(s2).add(1.0 / values[i]);
-                //½¨Á¢²¢²é¼¯
-                while (unionMap.containsKey(s1)) { //s1µÄ×æÏÈ
+                //å»ºç«‹å¹¶æŸ¥é›†
+                while (unionMap.containsKey(s1)) { //s1çš„ç¥–å…ˆ
                     s1 = unionMap.get(s1);
                 }
-                while (unionMap.containsKey(s2)) { //s2µÄ×æÏÈ
+                while (unionMap.containsKey(s2)) { //s2çš„ç¥–å…ˆ
                     s2 = unionMap.get(s2);
                 }
-                if (!s1.equals(s2)) { //×æÏÈ²»Í¬ÔòºÏ²¢×æÏÈ
+                if (!s1.equals(s2)) { //ç¥–å…ˆä¸åŒåˆ™åˆå¹¶ç¥–å…ˆ
                     String ancester = s1.compareTo(s2) < 0 ? s1 : s2;
                     String descendant = s1.compareTo(s2) < 0 ? s2 : s1;
-                    unionMap.put(descendant, ancester); //ÒÔ×ÖµäĞò½ÏĞ¡µÄ×÷Îª×æÏÈ£¬½Ï´óµÄ×÷Îªºó´ú
+                    unionMap.put(descendant, ancester); //ä»¥å­—å…¸åºè¾ƒå°çš„ä½œä¸ºç¥–å…ˆï¼Œè¾ƒå¤§çš„ä½œä¸ºåä»£
                 }
             }
 
-            double[] res = new double[queries.size()]; //Ìî³ä½á¹û
+            double[] res = new double[queries.size()]; //å¡«å……ç»“æœ
             for (int i = 0; i < queries.size(); i++) {
                 res[i] = dfs(queries.get(i).get(0), queries.get(i).get(1), unionMap, map, weight, new HashSet<>());
             }
@@ -74,10 +74,10 @@ public class Dynamic_CalcEquation {
 
         public Double dfs(String s1, String s2, HashMap<String, String> unionMap, HashMap<String, List<String>> map, HashMap<String, List<Double>> weight, HashSet<String> visited) {
             visited.add(s1);
-            if (!map.containsKey(s1) || !map.containsKey(s2)) { //Èç¹ûÆğµã»òÖÕµã²»´æÔÚÓÚÍ¼ÖĞ£¬ÖÕÖ¹
+            if (!map.containsKey(s1) || !map.containsKey(s2)) { //å¦‚æœèµ·ç‚¹æˆ–ç»ˆç‚¹ä¸å­˜åœ¨äºå›¾ä¸­ï¼Œç»ˆæ­¢
                 return -1.0;
             }
-            //Èç¹ûs1ºÍs2µÄ×æÏÈ²»Í¬£¬¼´Á½Õß²»»¥Í¨£¬²»¿ÉÄÜÕÒµ½Í¨Â·£¬ÖÕÖ¹
+            //å¦‚æœs1å’Œs2çš„ç¥–å…ˆä¸åŒï¼Œå³ä¸¤è€…ä¸äº’é€šï¼Œä¸å¯èƒ½æ‰¾åˆ°é€šè·¯ï¼Œç»ˆæ­¢
             String s1Father = s1, s2Father = s2;
             while (unionMap.containsKey(s1Father)) {
                 s1Father = unionMap.get(s1Father);
@@ -89,16 +89,16 @@ public class Dynamic_CalcEquation {
                 return -1.0;
             }
 
-            if (s1.equals(s2)) { //Èç¹ûÆğµãÖÕµãÏàÍ¬£¬ÕÒµ½¡°Í¨Â·¡±£¬È¨ÖØÎª1.0
+            if (s1.equals(s2)) { //å¦‚æœèµ·ç‚¹ç»ˆç‚¹ç›¸åŒï¼Œæ‰¾åˆ°â€œé€šè·¯â€ï¼Œæƒé‡ä¸º1.0
                 return 1.0;
             }
-            //±éÀúÓës1ÏàÁ¬µÄËùÓĞ½Úµã
+            //éå†ä¸s1ç›¸è¿çš„æ‰€æœ‰èŠ‚ç‚¹
             for (int i = 0; i < map.get(s1).size(); i++) {
-                if (visited.contains(map.get(s1).get(i))) { //Èç¹ûÒÑ¾­·ÃÎÊ¹ı£¬ÔòÌø¹ı
+                if (visited.contains(map.get(s1).get(i))) { //å¦‚æœå·²ç»è®¿é—®è¿‡ï¼Œåˆ™è·³è¿‡
                     continue;
                 }
                 double res = dfs(map.get(s1).get(i), s2, unionMap, map, weight, visited);//
-                double w = weight.get(s1).get(i); //s1µ½map.get(s1).get(i)µÄÈ¨ÖØ
+                double w = weight.get(s1).get(i); //s1åˆ°map.get(s1).get(i)çš„æƒé‡
 
                 if (res != -1.0) {
                     return res * w;
@@ -113,7 +113,7 @@ public class Dynamic_CalcEquation {
         private int len = 0;
 
         /**
-         ±éÀúequations£¬Ã¿´Îµ¼ÈëÒ»¸ö±äÁ¿¶ÔÊı×é£¬¶¼¶Ôdp¶şÎ¬Êı×é½øĞĞ´¦Àí£¬dp[i][j]±íÊ¾×Ö·û´®aºÍ×Ö·û´®bÏà³ıµÄ½á¹û£¬ÆäÖĞi´ú±í×Ö·û´®a£¬j´ú±í×Ö·û´®b¡£
+         éå†equationsï¼Œæ¯æ¬¡å¯¼å…¥ä¸€ä¸ªå˜é‡å¯¹æ•°ç»„ï¼Œéƒ½å¯¹dpäºŒç»´æ•°ç»„è¿›è¡Œå¤„ç†ï¼Œdp[i][j]è¡¨ç¤ºå­—ç¬¦ä¸²aå’Œå­—ç¬¦ä¸²bç›¸é™¤çš„ç»“æœï¼Œå…¶ä¸­iä»£è¡¨å­—ç¬¦ä¸²aï¼Œjä»£è¡¨å­—ç¬¦ä¸²bã€‚
 
          @param equations
          @param values
@@ -126,19 +126,19 @@ public class Dynamic_CalcEquation {
             double[][] dp = new double[40][40];
             for (int i = 0; i < equations.size(); i++) {
                 List<String> t = equations.get(i);
-                //»ñµÃ³ıÊıºÍ±»³ıÊı
+                //è·å¾—é™¤æ•°å’Œè¢«é™¤æ•°
                 String a = t.get(0);
                 String b = t.get(1);
-                //ÕÒµ½Str¶ÔÓ¦µÄÎ»ÖÃloc
+                //æ‰¾åˆ°Strå¯¹åº”çš„ä½ç½®loc
                 int loc1 = getLoc(a);
                 int loc2 = getLoc(b);
                 //"a"/"a"=1.0
                 dp[loc1][loc1] = 1;
                 dp[loc2][loc2] = 1;
-                //¸³Öµ
+                //èµ‹å€¼
                 dp[loc1][loc2] = values[i];
                 dp[loc2][loc1] = 1 / values[i];
-                //±éÀú¸³Öµ
+                //éå†èµ‹å€¼
                 for (int j = 0; j < len; j++) {
                     if (dp[j][loc1] != 0) {
                         dp[j][loc2] = dp[j][loc1] * dp[loc1][loc2];
@@ -185,7 +185,7 @@ public class Dynamic_CalcEquation {
             return ans;
         }
 
-        //ÀûÓÃMap»ñµÃStr¶ÔÓ¦µÄÎ»ÖÃloc
+        //åˆ©ç”¨Mapè·å¾—Strå¯¹åº”çš„ä½ç½®loc
         private int getLoc(String s) {
             if (stoLoc.containsKey(s)) {
                 return stoLoc.get(s);

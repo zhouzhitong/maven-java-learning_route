@@ -3,7 +3,7 @@ package com.zzt.struct.dynamic.application;
 import org.junit.jupiter.api.Test;
 
 /**
- * 描述：<br>
+ * 描述：<br>最长回文序列（可中断，即去除中间部分字符）
  * </>
  *
  * @author zzt
