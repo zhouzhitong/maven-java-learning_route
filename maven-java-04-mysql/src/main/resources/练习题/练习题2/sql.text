@@ -167,8 +167,6 @@ where a.s_id = b.s_id
 order by b.s_score desc;
 -- 17、按平均成绩从高到低显示所有学生的所有课程的成绩以及平均成绩
 
-# select  from score
-
 select stu.s_id,
        stu.s_name,
        round(avg(s.s_score))                                             as "avg_score",
@@ -406,7 +404,7 @@ from (
          left join student d on c.s_id = d.s_id
 where 排名 between 2 and 3;
 
--- 23、统计各科成绩各分数段人数：课程编号,课程名称,[100-85],[85-70],[70-60],[0-60]及所占百分比
+# 23、统计各科成绩各分数段人数：课程编号,课程名称,[100-85],[85-70],[70-60],[0-60]及所占百分比
 select @count := @count + 1,
        @score := s.s_score,
        case
@@ -497,16 +495,51 @@ from score a
 
          left join course f
                    on a.c_id = f.c_id;
--- 24、查询学生平均成绩及其名次
+# 24、查询学生平均成绩及其名次
+## 方式1
+select @k := @k + 1, s.s_id, s.avg_score, @i := @i + 1
+from (select s_id, round(avg(s_score), 2) as avg_score
+      from score
+      group by s_id
+      order by avg_score desc
+     ) s,
+     (select @k := 0, @i := 0) p;
+## 方式2
 select a.s_id,
        @i := @i + 1                                               as '不保留空缺排名',
        @k := (case when @avg_score = a.avg_s then @k else @i end) as '保留空缺排名',
        @avg_score := avg_s                                        as '平均分'
 from (select s_id, ROUND(AVG(s_score), 2) as avg_s from score group by s_id) a,
      (select @avg_score := 0, @i := 0, @k := 0) b;
--- 25、查询各科成绩前三名的记录
--- 1.选出b表比a表成绩大的所有组
--- 2.选出比当前id成绩大的 小于三个的
+# 25、查询各科成绩前三名的记录
+explain
+select p.c_id, p.s_id, p.s_score, p.randk
+from (select s.s_id
+           , s.s_score
+           , case
+                 when @cid = s.c_id
+                     then @i := @i + 1
+                 else @i := 1
+        end                 as "randk"
+           , @cid := s.c_id as c_id
+      from score s
+         , (select @i := 0, @cid := null) p
+      order by s.c_id, s.s_score desc) p
+where p.randk < 4;
+
+explain
+select s.s_id
+     , s.c_id
+     , s.s_score
+from score s
+         left join score b on s.c_id = b.c_id and s.s_score < b.s_score
+group by s.s_id, s.c_id
+having COUNT(s.c_id) < 3
+order by s.c_id, s.s_score desc;
+
+## 1.选出b表比a表成绩大的所有组
+
+## 2.选出比当前id成绩大的 小于三个的
 select a.s_id, a.c_id, a.s_score
 from score a
          left join score b on a.c_id = b.c_id and a.s_score < b.s_score
