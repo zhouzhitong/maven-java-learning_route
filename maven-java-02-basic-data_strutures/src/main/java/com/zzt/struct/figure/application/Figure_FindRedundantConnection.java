@@ -1,6 +1,7 @@
-﻿package com.zzt.struct.figure.application;
+package com.zzt.struct.figure.application;
 
 import org.junit.jupiter.api.Test;
+
 import java.util.*;
 
 /**
@@ -52,4 +53,5 @@ public class Figure_FindRedundantConnection {
         }
 
     }
+
 }
