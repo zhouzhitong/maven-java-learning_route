@@ -3,17 +3,16 @@ package com.zzt.struct.dynamic.application;
 import org.junit.jupiter.api.Test;
 
 /**
- * 描述：<br>最长回文序列（可中断，即去除中间部分字符）
- * </>
- *
- * @author zzt
- */
+ 描述：<br>最长回文序列（可中断，即去除中间部分字符）
+ </>
+ @author zzt */
 public class Dynamic_LongestPalindromeSubseq {
 
     @Test
     public void test01() {
         String s = "bbbab";
         System.out.println(new Solution().longestPalindromeSubseq(s));
+        System.out.println(new Solution1().longestPalindromeSubseq(s));
     }
 
     /** 暴力递归版本 */
@@ -35,6 +34,27 @@ public class Dynamic_LongestPalindromeSubseq {
             int p4 = cs[l] != cs[r] ? 0 : (2 + process(cs, l + 1, r - 1));
             return Math.max(Math.max(p1, p2), Math.max(p3, p4));
         }
+    }
+
+    private static class Solution1 {
+
+        public int longestPalindromeSubseq(String s) {
+            return process(s.toCharArray(), 0, s.length() - 1);
+        }
+
+        private int process(char[] chars, int l, int r) {
+            if (l == r) {
+                return 1;
+            }
+            if (l + 1 == r) {
+                return chars[l] == chars[r] ? 2 : 1;
+            }
+            int p1 = process(chars, l + 1, r);
+            int p2 = (chars[l] == chars[r] ? 2 : 0) + process(chars, l + 1, r - 1);
+            int p3 = process(chars, l, r - 1);
+            return Math.max(p1, Math.max(p2, p3));
+        }
+
     }
 
     /** 动态规划版本 */

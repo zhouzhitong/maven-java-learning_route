@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * ÃèÊö£º<br> 691. ÌùÖ½Æ´´Ê
+ * æè¿°ï¼š<br> 691. è´´çº¸æ‹¼è¯
  * https://leetcode.com/problems/stickers-to-spell-word
  * </>
  *
@@ -23,7 +23,7 @@ public class DynamicDemo_StickersToSpellWord {
         System.out.println(StickersToSpellWord3.minStickers(stickers, target));
     }
 
-    /** ±©Â¶µİ¹éÇó½â */
+    /** æš´éœ²é€’å½’æ±‚è§£ */
     private static class StickersToSpellWord1 {
 
         public static int minStickers(String[] stickers, String target) {
@@ -68,7 +68,7 @@ public class DynamicDemo_StickersToSpellWord {
 
     }
 
-    /** ±©Â¶µİ¹éÇó½â£ºÓÅ»¯°æ±¾ + »º´æ */
+    /** æš´éœ²é€’å½’æ±‚è§£ï¼šä¼˜åŒ–ç‰ˆæœ¬ + ç¼“å­˜ */
     private static class StickersToSpellWord2 {
 
         public static int minStickers(String[] stickers, String target) {
@@ -125,7 +125,7 @@ public class DynamicDemo_StickersToSpellWord {
 
     }
 
-    /** ¶¯Ì¬¹æ»®Çó½â */
+    /** åŠ¨æ€è§„åˆ’æ±‚è§£ */
     private static class StickersToSpellWord3 {
 
         public static int minStickers(String[] stickers, String target) {
