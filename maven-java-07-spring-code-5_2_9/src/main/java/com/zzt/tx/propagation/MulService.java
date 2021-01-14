@@ -13,9 +13,9 @@ public class MulService {
     private BookService bookService;
 
     @Transactional
-    /*(propagation = Propagation.REQUIRED
-//            , noRollbackFor = {ArithmeticException.class, UnexpectedRollbackException.class}
-    )*/
+    (propagation = Propagation.REQUIRED
+            , noRollbackFor = {ArithmeticException.class, UnexpectedRollbackException.class}
+    )
     public void mulTx() {
         /*try {
         } catch (Exception e) {

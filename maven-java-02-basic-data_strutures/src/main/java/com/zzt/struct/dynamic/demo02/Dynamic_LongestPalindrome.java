@@ -3,9 +3,9 @@ package com.zzt.struct.dynamic.demo02;
 import org.junit.jupiter.api.Test;
 
 /**
- * ÃèÊö£º<br>5. ×î³¤»ØÎÄ×Ó´®
+ * æè¿°ï¼š<br>5. æœ€é•¿å›æ–‡å­ä¸²
  * https://leetcode-cn.com/problems/longest-palindromic-substring/
- * ²Î¿¼£º
+ * å‚è€ƒï¼š
  * https://leetcode-cn.com/problems/longest-palindromic-substring/solution/zhong-xin-kuo-san-dong-tai-gui-hua-by-liweiwei1419/
  * </>
  *
@@ -20,7 +20,7 @@ public class Dynamic_LongestPalindrome {
         System.out.println(new Solution02().longestPalindrome(s));
     }
 
-    /** ±©Á¦Çó½â + ÖĞĞÄÀ©É¢ */
+    /** æš´åŠ›æ±‚è§£ + ä¸­å¿ƒæ‰©æ•£ */
     private static class Solution01 {
         public String longestPalindrome(String s) {
             if (s.length() <= 1) {
@@ -45,7 +45,7 @@ public class Dynamic_LongestPalindrome {
         }
 
         /**
-         * ÑéÖ¤×Ó´® s[left..right] ÊÇ·ñÎª»ØÎÄ´®
+         * éªŒè¯å­ä¸² s[left..right] æ˜¯å¦ä¸ºå›æ–‡ä¸²
          */
         private static boolean validPalindromic(char[] chars, int l, int r) {
             while (l < r) {
@@ -60,14 +60,14 @@ public class Dynamic_LongestPalindrome {
 
     private static class Solution02 {
         public String longestPalindrome(String s) {
-            // ÌØÅĞ
+            // ç‰¹åˆ¤
             int len = s.length();
             if (len < 2) {
                 return s;
             }
             int maxLen = 1;
             int begin = 0;
-            // dp[i][j] ±íÊ¾ s[i, j] ÊÇ·ñÊÇ»ØÎÄ´®
+            // dp[i][j] è¡¨ç¤º s[i, j] æ˜¯å¦æ˜¯å›æ–‡ä¸²
             boolean[][] dp = new boolean[len][len];
             char[] charArray = s.toCharArray();
 
@@ -86,7 +86,7 @@ public class Dynamic_LongestPalindrome {
                         }
                     }
 
-                    // Ö»Òª dp[i][j] == true ³ÉÁ¢£¬¾Í±íÊ¾×Ó´® s[i..j] ÊÇ»ØÎÄ£¬´ËÊ±¼ÇÂ¼»ØÎÄ³¤¶ÈºÍÆğÊ¼Î»ÖÃ
+                    // åªè¦ dp[i][j] == true æˆç«‹ï¼Œå°±è¡¨ç¤ºå­ä¸² s[i..j] æ˜¯å›æ–‡ï¼Œæ­¤æ—¶è®°å½•å›æ–‡é•¿åº¦å’Œèµ·å§‹ä½ç½®
                     if (dp[i][j] && j - i + 1 > maxLen) {
                         maxLen = j - i + 1;
                         begin = i;

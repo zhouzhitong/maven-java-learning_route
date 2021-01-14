@@ -35,10 +35,10 @@ public class DynamicDemo_Backpack_0Or1 {
             if (index == w.length) {
                 return 0;
             }
-            int p1 = process(w, v, index + 1, curBag);
+            int p1 = process(w, v, index + 1, curBag);  // 不要第 index 件物品
             int p2 = 0;
-            if (w[index] <= curBag) {
-                p2 = v[index] + process(w, v, index + 1, curBag - w[index]);
+            if (w[index] <= curBag) {   // 判断背包是否足够
+                p2 = v[index] + process(w, v, index + 1, curBag - w[index]);// 要第 index 件物品
             }
             return Math.max(p1, p2);
         }

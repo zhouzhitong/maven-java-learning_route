@@ -21,6 +21,7 @@
 ### 地狱级：
 
 [1. 贴纸拼词](demo02/DynamicDemo_Backpack_0Or1.java)
-[2. 最长回文序列（可中断，即去除中间部分字符）](application/Dynamic_LongestPalindromeSubseq.java)
+[2. 最长回文序列（可中断，即去除中间部分字符）](demo02/Dynamic_LongestPalindromeSubseq.java)
+[2. 最长回文序列（不可中断）【中等难度】](demo02/Dynamic_LongestPalindrome.java)
 
 

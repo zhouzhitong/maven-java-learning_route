@@ -2,6 +2,7 @@ package com.zzt.tx.propagation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.UnexpectedRollbackException;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,8 +20,8 @@ public class BookService {
      @param id       书的ID
      @return null
      */
-    @Transactional(propagation = Propagation.REQUIRES_NEW
-//            , noRollbackFor = {ArithmeticException.class, UnexpectedRollbackException.class}
+    @Transactional(propagation = Propagation.REQUIRED
+            , noRollbackFor = {ArithmeticException.class, UnexpectedRollbackException.class}
     )
     public void checkout(String username, int id) {
         System.out.println("############### 111111 ###############");
@@ -35,7 +36,7 @@ public class BookService {
      @param id    书的ID
      @param price 书的新价格
      */
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRED)
     public void updatePrice(int id, int price) {
         System.out.println("############### 222222 ###############");
         bookDao.updatePrice(id, price);

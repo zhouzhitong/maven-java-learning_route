@@ -24,11 +24,12 @@ public class Dynamic_MaxProfit_II {
             int p1;
             int p2;
             for (int i = 1; i < prices.length; i++) {
+                // 找到局部最低点
                 while (i < prices.length && prices[i] < prices[i - 1]) {
                     i++;
                 }
                 p1 = prices[i - 1];
-
+                // 找到局部最高点
                 while (i < prices.length && prices[i] > prices[i - 1]) {
                     i++;
                 }

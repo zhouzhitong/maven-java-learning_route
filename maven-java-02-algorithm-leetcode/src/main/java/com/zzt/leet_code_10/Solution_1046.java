@@ -14,7 +14,7 @@ public class Solution_1046 {
 
     @Test
     public void test01() {
-        int[] stones = {2, 7, 4, 1, 8};
+        int[] stones = {2, 7, 4, 1, 8,1};
         int i = lastStoneWeight(stones);
         System.out.println(i);
     }
@@ -32,9 +32,7 @@ public class Solution_1046 {
             int x = queue.poll();
             int y = queue.poll();
             int d = x-y;
-            if (d>0){
-                queue.offer(x-y);
-            }
+            queue.offer(x-y);
         }
         return queue.poll();
     }
